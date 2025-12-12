@@ -1,0 +1,3766 @@
+<div
+  id="aby-root"
+  class="aby-root"
+  style="width: 360px; height: 530px;"
+>
+  <section class="aby-hero">
+    <div class="aby-hero-overlay">
+      <div class="aby-hero-row">
+        <div class="aby-credit-chip">
+          <span class="aby-credit-label">Cr</span>
+          <span class="aby-credit-value" id="aby-credit">0</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="aby-main-tabs">
+    <button class="aby-main-tab active" data-mode="slave">노예 구매</button>
+    <button class="aby-main-tab" data-mode="item">아이템 구매</button>
+    <button class="aby-main-tab" data-mode="status">상태창</button>
+  </nav>
+
+  <section class="aby-main">
+    <div class="aby-view active" id="aby-view-slaves">
+      <div class="aby-filterbar">
+        <div class="aby-tabs" id="aby-tabs"></div>
+        <div class="aby-toolbar">
+          <button id="aby-sort-btn" class="aby-sort-btn">정렬: 희귀도</button>
+        </div>
+      </div>
+
+      <div class="aby-card-grid" id="aby-card-grid"></div>
+
+      <div class="aby-pagebar" id="aby-pagebar-slave">
+        <button class="aby-page-btn" id="aby-page-prev">◀</button>
+        <span class="aby-page-info" id="aby-page-info">1 / 1</span>
+        <button class="aby-page-btn" id="aby-page-next">▶</button>
+      </div>
+    </div>
+
+    <div class="aby-view" id="aby-view-items">
+      <div class="aby-item-filterbar">
+        <div class="aby-item-tabs">
+          <button class="aby-item-tab active" data-itab="common">공통</button>
+          <button class="aby-item-tab" data-itab="personal">전용</button>
+        </div>
+
+        <div class="aby-item-tools">
+          <select id="aby-item-owner-filter" class="aby-item-owner-filter">
+            <option value="all">캐릭터</option>
+          </select>
+
+          <button class="aby-sort-btn" id="aby-item-sort-btn">가격 낮은순</button>
+        </div>
+      </div>
+
+      <div class="aby-item-grid" id="aby-item-grid"></div>
+
+      <div class="aby-pagebar" id="aby-pagebar-item">
+        <button class="aby-page-btn" id="aby-item-page-prev">◀</button>
+        <span class="aby-page-info" id="aby-item-page-info">1 / 1</span>
+        <button class="aby-page-btn" id="aby-item-page-next">▶</button>
+      </div>
+    </div>
+
+    <div class="aby-view" id="aby-view-status">
+      <div class="aby-status-placeholder">
+        상태창은 나중에 붙일 자리야.  
+        <br />지금은 레이아웃만 잡아 둘게.
+      </div>
+    </div>
+  </section>
+
+  <div class="aby-bottomsheet-backdrop" id="aby-bottomsheet-backdrop"></div>
+  <section class="aby-bottomsheet" id="aby-bottomsheet">
+    <div class="aby-poster-card">
+      <div class="aby-poster-bg" id="aby-poster-bg"></div>
+      <div class="aby-poster-gradient"></div>
+
+      <div class="aby-poster-content">
+        <header class="aby-poster-header">
+          <div class="aby-bs-headerbox">
+            <div class="aby-bs-title-row">
+              <h2 class="aby-bs-name" id="aby-bs-name">선택된 상품 없음</h2>
+              <span class="aby-bs-race" id="aby-bs-race">드래곤</span>
+            </div>
+            <div class="aby-bs-meta-row">
+              <span class="aby-bs-rarity" id="aby-bs-rarity"></span>
+              <span class="aby-bs-subtag" id="aby-bs-gender"></span>
+              <span class="aby-bs-subtag" id="aby-bs-status"></span>
+            </div>
+          </div>
+
+          <button class="aby-bs-close" id="aby-bs-close" type="button">✕</button>
+        </header>
+
+        <div class="aby-poster-main">
+          <section class="aby-bs-section">
+            <div class="aby-bs-section-title">성격 / 특징</div>
+            <div class="aby-bs-taglist" id="aby-bs-traits"></div>
+          </section>
+
+          <section class="aby-bs-section">
+            <div class="aby-bs-section-title">간단 소개</div>
+            <div class="aby-bs-desc" id="aby-bs-desc">
+              상품을 선택하면 간단한 설명이 표시됩니다.
+            </div>
+          </section>
+
+          <section class="aby-bs-section">
+            <div class="aby-bs-section-title">리리 코멘트</div>
+            <div class="aby-bs-riri" id="aby-bs-riri">
+              😈 “주인님, 상품을 선택하시면 제가 의견을 들려드릴게요.”
+            </div>
+          </section>
+        </div>
+
+        <footer class="aby-poster-footer">
+          <div class="aby-bs-pricebox">
+            <div class="aby-bs-price-label">가격</div>
+            <div class="aby-bs-price-value" id="aby-bs-price">-</div>
+          </div>
+
+          <div class="aby-bs-actions">
+            <button class="aby-btn aby-btn-main" data-action="buy">즉시 구매</button>
+          </div>
+
+          <button class="aby-btn aby-btn-ghost" data-action="ask-riri">
+            이 노예의 더러운 비밀을 알려줘, 리리
+          </button>
+        </footer>
+      </div>
+    </div>
+  </section>
+
+  <div class="aby-itemsheet-backdrop" id="aby-itemsheet-backdrop"></div>
+  <section class="aby-itemsheet" id="aby-itemsheet">
+    <div class="aby-itemsheet-panel">
+      <header class="aby-itemsheet-header">
+        <div class="aby-itemsheet-title-wrap">
+          <div class="aby-itemsheet-title" id="aby-itemsheet-title">아이템을 선택하세요</div>
+          <div class="aby-itemsheet-sub" id="aby-itemsheet-sub">공통 아이템</div>
+        </div>
+        <button class="aby-itemsheet-close" id="aby-itemsheet-close">✕</button>
+      </header>
+
+      <div class="aby-itemsheet-body">
+        <dl class="aby-itemsheet-dl">
+          <div class="aby-itemsheet-row">
+            <dt>효과</dt>
+            <dd id="aby-itemsheet-effect">아이템의 효과가 여기 표시됩니다.</dd>
+          </div>
+          <div class="aby-itemsheet-row">
+            <dt>용도</dt>
+            <dd id="aby-itemsheet-usage">아이템을 어떻게 써먹는지 설명이 들어갑니다.</dd>
+          </div>
+          <div class="aby-itemsheet-row" id="aby-itemsheet-riri-row">
+            <dt>리리 코멘트</dt>
+            <dd id="aby-itemsheet-riri">
+              “아이템을 하나 골라봐, 주인. 내가 얼마나 변태템인지 찐하게 설명해줄게.”
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+      <footer class="aby-itemsheet-footer">
+        <div class="aby-itemsheet-price" id="aby-itemsheet-price">- Cr</div>
+
+        <select id="aby-item-target" class="aby-item-target">
+          <option value="">사용 대상 선택</option>
+        </select>
+
+        <button class="aby-btn aby-btn-main" id="aby-itemsheet-buy">아이템 구매</button>
+      </footer>
+    </div>
+  </section>
+</div>
+
+<style>
+:root {
+  --aby-bg: #05070c;
+  --aby-panel: #020617;
+  --aby-panel-soft: rgba(3, 7, 18, 0.96);
+  --aby-text-main: #e5e7eb;
+  --aby-text-muted: #9ca3af;
+  --aby-text-soft: #6b7280;
+  --aby-accent-main: #f97316;
+  --aby-accent-main-soft: #fed7aa;
+  --aby-accent-sub: #38bdf8;
+  --aby-chip-bg: rgba(15, 23, 42, 0.85);
+  --aby-chip-border: rgba(148, 163, 184, 0.8);
+  --aby-chip-blue: rgba(30, 64, 175, 0.85);
+}
+
+.aby-root {
+  box-sizing: border-box;
+  padding: 6px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo",
+    system-ui, sans-serif;
+  background: var(--aby-bg);
+  color: var(--aby-text-main);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.aby-hero {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-image: url("https://itimg.kr/400/abyss/%ED%95%B4%EB%8D%94.png");
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+}
+.aby-hero-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 6px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.aby-hero-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 6px;
+}
+.aby-rank,
+.aby-credit-chip {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 11px;
+}
+.aby-rank {
+  pointer-events: auto;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+.aby-credit-chip {
+  pointer-events: auto;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 184, 96, 0.9);
+}
+.aby-credit-label {
+  font-size: 11px;
+  opacity: 0.9;
+}
+.aby-credit-value {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.aby-main-tabs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+  padding: 4px 2px 0;
+}
+.aby-main-tab {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--aby-text-muted);
+  font-size: 12px;
+  padding: 6px 0 4px;
+  cursor: pointer;
+  position: relative;
+}
+.aby-main-tab.active {
+  color: #ffffff;
+  font-weight: 600;
+}
+.aby-main-tab.active::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--aby-accent-main);
+}
+
+.aby-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.aby-view {
+  flex: 1;
+  display: none;
+  flex-direction: column;
+}
+.aby-view.active {
+  display: flex;
+}
+
+.aby-filterbar,
+.aby-item-filterbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 6px;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+}
+.aby-tabs {
+  flex: 1;
+  display: flex;
+  gap: 6px;
+}
+.aby-tab {
+  padding: 0 10px;
+  height: 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  font-size: 11px;
+  white-space: nowrap;
+  background: rgba(15, 23, 42, 0.95);
+  color: #e5e7eb;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+.aby-tab.active {
+  border-color: #fb923c;
+  background: #fed7aa;
+  color: #7c2d12;
+  font-weight: 600;
+}
+.aby-toolbar {
+  flex: 0 0 auto;
+}
+.aby-sort-btn {
+  padding: 0 12px;
+  height: 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: rgba(15, 23, 42, 0.95);
+  color: #e5e7eb;
+  font-size: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.aby-card-grid {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0 6px;
+}
+.aby-card {
+  position: relative;
+  flex: 0 0 calc(33.333% - 8px);
+  max-width: 140px;
+  height: 200px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  overflow: hidden;
+  background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.7);
+}
+.aby-card[data-rarity="5"] {
+  box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.9);
+}
+.aby-card[data-rarity="4"] {
+  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.9);
+}
+.aby-card[data-rarity="3"] {
+  box-shadow: 0 0 0 1px rgba(52, 211, 153, 0.7);
+}
+.aby-card-illu {
+  position: absolute;
+  inset: 0;
+}
+.aby-card-illu img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.05) contrast(1.05);
+}
+.aby-card-ribbon {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 9px;
+  background: linear-gradient(135deg, #fed7aa, #f97316);
+  color: #3b0b0b;
+  font-weight: 700;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+}
+.aby-card-ribbon.empty {
+  display: none;
+}
+.aby-card-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 5px 7px 7px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.92) 0%,
+    rgba(0, 0, 0, 0.65) 40%,
+    rgba(0, 0, 0, 0.0) 100%
+  );
+  color: #f9fafb;
+  font-size: 9px;
+}
+.aby-card-name-row {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1px;
+  padding: 2px 4px 2px 2px;
+}
+.aby-card-name-row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: -2px;
+  right: -2px;
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    rgba(249, 115, 22, 0.6),
+    rgba(249, 115, 22, 0.0)
+  );
+  opacity: 0.45;
+}
+.aby-card-name,
+.aby-card-stars {
+  position: relative;
+}
+.aby-card-name {
+  color: #f9fafb;
+  font-size: 10px;
+  font-weight: 700;
+  max-width: 70px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
+}
+.aby-card-stars {
+  font-size: 9px;
+  color: #facc15;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+}
+.aby-card-meta {
+  margin-top: 1px;
+  opacity: 0.9;
+  color: #e5e7eb;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
+}
+.aby-card-price {
+  margin-top: 2px;
+  font-size: 9px;
+  font-weight: 700;
+  color: #fb923c;
+  text-shadow:
+    0 0 4px rgba(0, 0, 0, 0.9),
+    0 0 1px rgba(0, 0, 0, 0.9);
+}
+
+.aby-empty {
+  width: 100%;
+  font-size: 11px;
+  text-align: center;
+  color: #9ca3af;
+  padding: 10px 4px;
+}
+
+.aby-pagebar {
+  margin: 2px 0 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #e5e7eb;
+}
+.aby-page-btn {
+  width: 28px;
+  height: 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: rgba(15, 23, 42, 0.95);
+  color: #e5e7eb;
+  font-size: 10px;
+  cursor: pointer;
+}
+.aby-page-info {
+  min-width: 48px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.aby-bottomsheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease-out;
+  z-index: 40;
+}
+.aby-bottomsheet-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.aby-bottomsheet {
+  position: fixed;
+  inset: 0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transform: translateY(100%);
+  transition: transform 0.25s ease-out;
+  z-index: 50;
+}
+.aby-bottomsheet.open {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.aby-poster-card {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  height: 100%;
+  max-height: 680px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #020617;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.9);
+}
+.aby-poster-bg {
+  position: absolute;
+  inset: 0;
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: saturate(1.05) contrast(1.05);
+}
+.aby-poster-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(3, 7, 18, 0.96) 0%,
+    rgba(3, 7, 18, 0.9) 28%,
+    rgba(3, 7, 18, 0.7) 45%,
+    rgba(3, 7, 18, 0.4) 60%,
+    rgba(3, 7, 18, 0.12) 78%,
+    rgba(3, 7, 18, 0.0) 100%
+  );
+}
+.aby-poster-content {
+  position: absolute;
+  inset: 0;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+}
+.aby-poster-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.aby-bs-headerbox {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+.aby-bs-title-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+.aby-bs-name {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: #f97316;
+  text-shadow:
+    0 0 4px rgba(249, 115, 22, 1),
+    0 0 10px rgba(251, 146, 60, 1),
+    0 0 14px rgba(0, 0, 0, 1);
+}
+.aby-bs-race {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.8);
+  font-size: 10px;
+}
+.aby-bs-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-size: 10px;
+}
+.aby-bs-rarity {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  color: #fffbeb;
+  background: rgba(24, 16, 6, 0.95);
+  border: 1px solid rgba(251, 191, 36, 1);
+  text-shadow:
+    0 0 4px rgba(251, 191, 36, 1),
+    0 0 8px rgba(245, 158, 11, 1);
+}
+.aby-bs-subtag {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(30, 64, 175, 0.85);
+  border: none;
+  font-size: 10px;
+}
+.aby-bs-close {
+  pointer-events: auto;
+  margin-left: 8px;
+  padding: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.9);
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.aby-poster-main {
+  margin-top: auto;
+  max-height: 220px;
+  padding-right: 4px;
+  overflow-y: auto;
+}
+.aby-bs-section {
+  margin-bottom: 10px;
+}
+.aby-bs-section-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  padding-left: 6px;
+  color: #7dd3fc;
+  border-left: 2px solid #38bdf8;
+  text-shadow:
+    0 0 4px rgba(56, 189, 248, 0.9),
+    0 0 10px rgba(8, 47, 73, 0.9);
+}
+.aby-bs-taglist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 10px;
+}
+.aby-bs-tagitem {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 11px;
+  color: #bfdbfe;
+  text-shadow: 0 0 4px rgba(59, 130, 246, 0.8);
+}
+.aby-bs-tagitem::before {
+  content: "#";
+  margin-right: 2px;
+  opacity: 0.9;
+  font-size: 10px;
+}
+.aby-bs-desc,
+.aby-bs-riri {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #e0f2fe;
+  text-shadow:
+    0 0 4px rgba(15, 23, 42, 0.9),
+    0 0 8px rgba(56, 189, 248, 0.6);
+}
+.aby-poster-footer {
+  flex-shrink: 0;
+  margin-top: 4px;
+  padding-top: 6px;
+  border-top: 1px dashed rgba(55, 65, 81, 0.85);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.aby-bs-pricebox {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.aby-bs-price-label {
+  font-size: 11px;
+  color: #9ca3af;
+}
+.aby-bs-price-value {
+  font-size: 18px;
+  font-weight: 800;
+  color: #f97316;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.9);
+}
+
+.aby-bs-actions {
+  display: flex;
+  gap: 6px;
+}
+.aby-btn {
+  width: 100%;
+  border-radius: 999px;
+  border: none;
+  padding: 8px 0;
+  font-size: 12px;
+  cursor: pointer;
+}
+.aby-btn-main {
+  background: linear-gradient(135deg, #fb923c, #f97316);
+  color: #1b0b06;
+  font-weight: 700;
+}
+.aby-btn-ghost {
+  border: 1px dashed rgba(148, 163, 184, 0.8);
+  background: transparent;
+  color: #e5e7eb;
+  padding: 6px 0;
+  font-size: 11px;
+}
+
+.aby-item-tabs {
+  display: inline-flex;
+  gap: 6px;
+}
+.aby-item-tab {
+  padding: 0 10px;
+  height: 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: rgba(15, 23, 42, 0.95);
+  color: #e5e7eb;
+  font-size: 11px;
+  cursor: pointer;
+}
+.aby-item-tab.active {
+  background: #fb923c;
+  border-color: #fed7aa;
+  color: #111827;
+  font-weight: 700;
+}
+
+.aby-item-grid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px 4px 6px;
+  justify-content: center;
+}
+
+.aby-item-card {
+  position: relative;
+  border-radius: 10px;
+  padding: 8px 6px;
+  background: radial-gradient(circle at top, #111827 0%, #020617 55%, #000 100%);
+  box-shadow: 0 3px 6px rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(55, 65, 81, 0.9);
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  min-height: 70px;
+}
+
+.aby-item-card-inner {
+  position: relative;
+  border-radius: 8px;
+  padding: 5px 6px;
+  background: rgba(15, 23, 42, 0.96);
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  grid-auto-rows: auto;
+  column-gap: 6px;
+  align-items: center;
+}
+
+.aby-item-icon-wrap {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+}
+.aby-item-icon-bg {
+  display: none;
+}
+.aby-item-icon-inner {
+  position: relative;
+  inset: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  line-height: 1;
+  background: radial-gradient(circle at 30% 15%, #111827 0%, #020617 70%);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  box-shadow:
+    0 0 0 1px rgba(15, 23, 42, 0.9),
+    0 0 12px rgba(56, 189, 248, 0.4);
+}
+.aby-item-icon-inner::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.aby-item-icon-inner img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.aby-item-name {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fef9c3;
+  text-shadow:
+    0 0 4px rgba(251, 191, 36, 0.9),
+    0 0 8px rgba(249, 115, 22, 0.7);
+  margin: 0 0 2px;
+  text-align: left;
+}
+.aby-item-effect {
+  grid-column: 2;
+  grid-row: 2;
+  font-size: 9px;
+  text-align: left;
+  color: #a5b4fc;
+  text-shadow: 0 0 4px rgba(129, 140, 248, 0.7);
+  margin: 0;
+  min-height: auto;
+}
+
+.aby-item-pricebar {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+.aby-item-price-label {
+  font-size: 9px;
+  color: #a5b4fc;
+  text-shadow:
+    0 0 4px rgba(129, 140, 248, 0.9),
+    0 0 8px rgba(37, 99, 235, 0.7);
+}
+.aby-item-price-value {
+  font-size: 11px;
+  font-weight: 700;
+  color: #f97316;
+  text-shadow: 0 0 4px rgba(248, 113, 22, 0.9);
+}
+
+.aby-item-card.selected,
+.aby-card.selected {
+  outline: 2px solid #f97316;
+  outline-offset: 1px;
+}
+
+.aby-itemsheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease-out;
+  z-index: 40;
+}
+.aby-itemsheet-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.aby-itemsheet {
+  position: fixed;
+  inset: auto 0 0 0;
+  padding: 8px 8px 10px;
+  transform: translateY(100%);
+  transition: transform 0.25s ease-out;
+  z-index: 50;
+  pointer-events: none;
+}
+.aby-itemsheet.open {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.aby-itemsheet-panel {
+  max-width: 420px;
+  margin: 0 auto;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #020617 0%, #020617 60%, #060716 100%);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(31, 41, 55, 0.9);
+  padding: 10px 12px 10px;
+}
+.aby-itemsheet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.aby-itemsheet-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.aby-itemsheet-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #e0f2fe;
+  text-shadow:
+    0 0 4px rgba(56, 189, 248, 0.9),
+    0 0 10px rgba(8, 47, 73, 0.9);
+}
+.aby-itemsheet-sub {
+  font-size: 10px;
+  color: var(--aby-text-muted);
+}
+.aby-itemsheet-close {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.9);
+  background: rgba(15, 23, 42, 0.98);
+  color: #e5e7eb;
+  font-size: 12px;
+  cursor: pointer;
+}
+.aby-itemsheet-body {
+  max-height: 180px;
+  overflow-y: auto;
+  padding: 4px 2px 4px;
+}
+.aby-itemsheet-dl {
+  margin: 0;
+}
+.aby-itemsheet-row {
+  margin-bottom: 8px;
+}
+.aby-itemsheet-row dt {
+  font-size: 10px;
+  color: #7dd3fc;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  text-shadow:
+    0 0 4px rgba(56, 189, 248, 0.9),
+    0 0 8px rgba(8, 47, 73, 0.9);
+}
+.aby-itemsheet-row dd {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.6;
+  color: #e0f2fe;
+  text-shadow:
+    0 0 4px rgba(15, 23, 42, 0.9),
+    0 0 8px rgba(56, 189, 248, 0.5);
+}
+.aby-itemsheet-footer {
+  margin-top: 6px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.aby-item-target-select {
+  flex: 1;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.8);
+  background: rgba(15, 23, 42, 0.98);
+  color: #e5e7eb;
+  font-size: 11px;
+  padding: 0 10px;
+  outline: none;
+}
+
+#aby-itemsheet-buy {
+  flex: 1;
+}
+.aby-itemsheet-price {
+  display: none;
+}
+
+.aby-status-placeholder {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--aby-text-muted);
+  text-align: center;
+}
+
+.aby-item-tools {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.aby-item-owner-filter {
+  height: 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: rgba(15, 23, 42, 0.98);
+  color: #e5e7eb;
+  font-size: 10px;
+  padding: 0 8px;
+  outline: none;
+  max-width: 120px;
+}
+.aby-item-owner-filter option {
+  background: #020617;
+  color: #e5e7eb;
+}
+.aby-item-owner-filter.hidden {
+  display: none;
+}
+
+.aby-item-target {
+  flex: 1;
+  height: 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: rgba(15, 23, 42, 0.98);
+  color: #e5e7eb;
+  font-size: 10px;
+  padding: 0 8px;
+  outline: none;
+}
+.aby-item-target option {
+  background: #020617;
+  color: #e5e7eb;
+}
+
+.aby-itemsheet-body::-webkit-scrollbar {
+  width: 4px;
+}
+.aby-itemsheet-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.aby-itemsheet-body::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background-image: linear-gradient(180deg, #38bdf8, #f97316);
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.7);
+}
+.aby-itemsheet-body {
+  scrollbar-width: thin;
+  scrollbar-color: #38bdf8 transparent;
+}
+
+.aby-status-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px 2px 4px;
+}
+
+.aby-status-header {
+  font-size: 11px;
+  color: #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 2px 6px 4px;
+  border-bottom: 1px dashed rgba(55, 65, 81, 0.9);
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+}
+.aby-status-header span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.aby-status-list {
+  margin-top: 4px;
+  padding-right: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+.aby-status-list::-webkit-scrollbar {
+  width: 4px;
+}
+.aby-status-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.aby-status-list::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background-image: linear-gradient(180deg, #22c55e, #38bdf8);
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.7);
+}
+.aby-status-list {
+  scrollbar-width: thin;
+  scrollbar-color: #22c55e transparent;
+}
+
+.aby-status-card {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 12px;
+  background: radial-gradient(circle at top left, #020617 0%, #020617 55%, #000 100%);
+  border: 1px solid rgba(31, 41, 55, 0.95);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.8);
+}
+.aby-status-illu {
+  flex: 0 0 56px;
+  height: 56px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #020617;
+  position: relative;
+  margin-top: 7px;
+}
+.aby-status-illu img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.aby-status-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.aby-status-name-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+}
+.aby-status-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: #fef9c3;
+  text-shadow:
+    0 0 4px rgba(250, 204, 21, 0.9),
+    0 0 8px rgba(249, 115, 22, 0.7);
+}
+.aby-status-rarity {
+  font-size: 10px;
+  color: #facc15;
+  text-shadow:
+    0 0 4px rgba(250, 204, 21, 0.9),
+    0 0 8px rgba(120, 53, 15, 0.9);
+}
+
+.aby-status-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.aby-status-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 9px;
+}
+.aby-status-bar-label {
+  flex: 0 0 40px;
+  color: #9ca3af;
+}
+.aby-status-bar-track {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.95);
+  overflow: hidden;
+  position: relative;
+}
+.aby-status-bar-fill {
+  position: absolute;
+  inset: 0;
+  width: 0%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #22c55e, #38bdf8);
+  box-shadow:
+    0 0 4px rgba(56, 189, 248, 0.6),
+    0 0 8px rgba(34, 197, 94, 0.6);
+}
+
+.aby-status-bars .aby-status-bar-row:nth-child(1) .aby-status-bar-fill {
+  background: linear-gradient(90deg, #22c55e, #a3e635);
+  box-shadow:
+    0 0 4px rgba(34, 197, 94, 0.9),
+    0 0 10px rgba(74, 222, 128, 0.9);
+}
+.aby-status-bars .aby-status-bar-row:nth-child(1) .aby-status-bar-label,
+.aby-status-bars .aby-status-bar-row:nth-child(1) .aby-status-bar-value {
+  color: #bbf7d0;
+}
+
+.aby-status-bars .aby-status-bar-row:nth-child(2) .aby-status-bar-fill {
+  background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+  box-shadow:
+    0 0 4px rgba(56, 189, 248, 0.9),
+    0 0 10px rgba(37, 99, 235, 0.9);
+}
+.aby-status-bars .aby-status-bar-row:nth-child(2) .aby-status-bar-label,
+.aby-status-bars .aby-status-bar-row:nth-child(2) .aby-status-bar-value {
+  color: #bae6fd;
+}
+
+.aby-status-bars .aby-status-bar-row:nth-child(3) .aby-status-bar-fill {
+  background: linear-gradient(90deg, #a855f7, #f97316);
+  box-shadow:
+    0 0 4px rgba(217, 70, 239, 0.9),
+    0 0 10px rgba(249, 115, 22, 0.9);
+}
+.aby-status-bars .aby-status-bar-row:nth-child(3) .aby-status-bar-label,
+.aby-status-bars .aby-status-bar-row:nth-child(3) .aby-status-bar-value {
+  color: #f9a8d4;
+}
+
+.aby-status-bar-value {
+  flex: 0 0 26px;
+  text-align: right;
+  font-size: 9px;
+  color: #e5e7eb;
+}
+
+.aby-status-mood {
+  margin-top: 2px;
+  font-size: 10px;
+  color: #c7d2fe;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow:
+    0 0 4px rgba(129, 140, 248, 0.9),
+    0 0 8px rgba(30, 64, 175, 0.9);
+}
+
+.aby-item-card[data-rarity="1"] .aby-item-icon-inner,
+.aby-item-card[data-rarity="2"] .aby-item-icon-inner {
+  box-shadow:
+    0 0 0 1px rgba(15,23,42,0.9),
+    0 0 10px rgba(148,163,184,0.35);
+}
+.aby-item-card[data-rarity="3"] .aby-item-icon-inner {
+  border-color: rgba(52, 211, 153, 0.9);
+  box-shadow:
+    0 0 0 1px rgba(15,23,42,0.9),
+    0 0 14px rgba(52, 211, 153, 0.55);
+}
+.aby-item-card[data-rarity="4"] .aby-item-icon-inner {
+  border-color: rgba(96, 165, 250, 0.9);
+  box-shadow:
+    0 0 0 1px rgba(15,23,42,0.9),
+    0 0 14px rgba(59,130,246,0.6);
+}
+.aby-item-card[data-rarity="5"] .aby-item-icon-inner {
+  border-color: rgba(250, 204, 21, 0.95);
+  box-shadow:
+    0 0 0 1px rgba(15,23,42,0.9),
+    0 0 16px rgba(250, 204, 21, 0.7);
+}
+
+.aby-rank { display: none; }
+
+.aby-bottomsheet .aby-bs-name {
+  color: #fef3c7;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.9);
+}
+.aby-bottomsheet .aby-bs-rarity {
+  color: #facc15;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
+}
+</style>
+
+<script>
+const ABY_IMG_BASE = "https://itimg.kr/400/abyss/";
+
+const ABY_DEFAULT_SLAVES = [
+  {
+    id: "kim-nayoung",
+    name: "김나영",
+    gender: "女",
+    race: "인간",
+    traits: ["반항", "슬렌더", "M성향"],
+    price: 2000,
+    rarity: 2,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "김나영.png",
+    desc: "빚 때문에 팔려온 편의점 알바생. 입은 거친데 몸은 솔직함.",
+    ririComment:
+      "눈빛 독한 거 봐. 주인, 저런 애가 굴복할 때 소리가 제일 맛있는 거 알지?",
+    userLine: "이거 범죄야! 신고할... 흐으, 거긴 안 돼...",
+  },
+  {
+    id: "lee-sehee",
+    name: "이세희",
+    gender: "女",
+    race: "인간",
+    traits: ["노출증", "쉬운여자", "속물"],
+    price: 2500,
+    rarity: 2,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "이세희.png",
+    desc: "돈만 주면 다 하는 델리걸. 생각 없이 즐기기 딱 좋음.",
+    ririComment:
+      "싸게 굴리기 딱 좋아. 망가져도 수리비가 더 나오니까 맘 편히 써.",
+    userLine: "오빠, 얼마 줄 거야? 나 비싼데~ 헤헤.",
+  },
+  {
+    id: "kang-sohee",
+    name: "강소희",
+    gender: "女",
+    race: "인간",
+    traits: ["무한체력", "건강미", "육체M"],
+    price: 3000,
+    rarity: 2,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "강소희.png",
+    desc: "운동선수 출신. 맷집이 좋아서 투기장이나 육체노동에 적합.",
+    ririComment: "튼튼한 거 보소. 침대 부서지게 박아도 멀쩡하겠는데?",
+    userLine: "하아... 더 세게 해도 돼요. 안 죽으니까.",
+  },
+  {
+    id: "han-sua",
+    name: "한수아",
+    gender: "女",
+    race: "인간",
+    traits: ["처녀", "겁쟁이", "안경"],
+    price: 4500,
+    rarity: 2,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "한수아.png",
+    desc: "남성 공포증이 있는 대학생. 안경을 벗기면 아무것도 못함.",
+    ririComment:
+      "처녀 딱지 붙은 거 보여? 주인, 비싸게 팔 때까지 아껴야 해!",
+    userLine: "제발... 다가오지 마세요... 너무 무서워요...",
+  },
+  {
+    id: "song-jieun",
+    name: "송지은",
+    gender: "女",
+    race: "인간",
+    traits: ["관종", "BJ", "보여주기"],
+    price: 5000,
+    rarity: 2,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "송지은.png",
+    desc: "관심받고 싶어 안달 난 인터넷 방송인. 카메라만 켜면 음란해짐.",
+    ririComment: "방송용으로 딱이야. 별풍선만 쏘면 다리 벌릴걸?",
+    userLine: "별풍 쏘면 여기 보여줄게. 잘 봐? 핑크색이지?",
+  },
+  {
+    id: "choi-yuri",
+    name: "최유리",
+    gender: "女",
+    race: "인간",
+    traits: ["비서", "수치심", "오피스룩"],
+    price: 6500,
+    rarity: 2,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "최유리.png",
+    desc: "깐깐한 비서실장. 옷을 입은 채로 당하는 배덕감을 즐김.",
+    ririComment:
+      "저런 깐깐한 여자가 앙앙대는 게 꼴 포인트라며? 주인 취향이야?",
+    userLine: "사, 사장님... 회사에서 이러시면 안 됩니다...",
+  },
+  {
+    id: "jung-hyejin",
+    name: "정혜진",
+    gender: "女",
+    race: "인간",
+    traits: ["새디스트", "결벽증", "간호사"],
+    price: 7000,
+    rarity: 2,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "정혜진.png",
+    desc: "남을 괴롭히길 좋아하는 간호사. 더러운 걸 싫어해서 관장에 집착함.",
+    ririComment:
+      "주인, 조심해. 쟤한테 잘못 걸리면 하루 종일 주사만 맞을지도 몰라.",
+    userLine: "환자분, 얌전히 다리 벌리세요. 치료해야죠?",
+  },
+
+  {
+    id: "park-minjung",
+    name: "박민정",
+    gender: "女",
+    race: "인간",
+    traits: ["수유/모유", "미망인", "헌신"],
+    price: 12000,
+    rarity: 3,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "박민정.png",
+    desc: "빚 갚으러 온 유부녀. 모성애가 강해 유저를 아들처럼 챙김.",
+    ririComment:
+      "와... 가슴 봐. 저거면 우리 1년치 우유값은 굳겠다. 그치?",
+    userLine: "우리 사장님... 엄마 젖이 그렇게 먹고 싶었어요?",
+  },
+  {
+    id: "coco",
+    name: "코코",
+    gender: "女",
+    race: "햄스터",
+    traits: ["식탐", "포켓사이즈", "펠라"],
+    price: 15000,
+    rarity: 3,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "코코.png",
+    desc: "한 손에 쏙 들어오는 햄스터 수인. 볼 주머니에 뭐든 넣으려 함.",
+    ririComment:
+      "주인, 밟지 않게 조심해! 작아서 잃어버리면 못 찾는다?",
+    userLine: "웅냠... 입안 가득 찼어... 더 안 들어가...",
+  },
+  {
+    id: "mary",
+    name: "매리",
+    gender: "女",
+    race: "양",
+    traits: ["수면간", "제모플", "무방비"],
+    price: 18000,
+    rarity: 3,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "매리.png",
+    desc: "잠이 많은 양 수인. 털을 밀거나 자고 있을 때 건드려도 모름.",
+    ririComment:
+      "얜 맨날 자냐... 주인, 그냥 베개로 써도 될 거 같아.",
+    userLine: "음냐... 털 미는 거예요? 알아서 해요...",
+  },
+  {
+    id: "mimi",
+    name: "미미",
+    gender: "女",
+    race: "비글",
+    traits: ["방뇨/노출", "에너자이저", "도그플"],
+    price: 20000,
+    rarity: 3,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "미미.png",
+    desc: "잠시도 가만히 못 있는 비글. 야외에서 배변하는 걸 즐김.",
+    ririComment:
+      "악! 정신 사나워! 주인, 제발 쟤 산책 좀 시키고 와!",
+    userLine: "주인님! 미미 오줌 쌌어요! 잘했죠? 헤헤!",
+  },
+  {
+    id: "nabi",
+    name: "나비",
+    gender: "女",
+    race: "고양이",
+    traits: ["츤데레", "까슬한 혀", "발정기"],
+    price: 22000,
+    rarity: 3,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "나비.png",
+    desc: "도도한 고양이 수인. 평소엔 까칠하지만 발정기엔 개냥이가 됨.",
+    ririComment:
+      "비싼 척 하기는. 츄르 하나면 배 까뒤집을 거면서.",
+    userLine: "거기 핥아줘? 흥, 집사가 원한다면야.",
+  },
+  {
+    id: "luna",
+    name: "루나",
+    gender: "女",
+    race: "토끼",
+    traits: ["상시발정", "조루/속사", "민감"],
+    price: 25000,
+    rarity: 3,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "루나.png",
+    desc: "3초면 가버리는 토끼 수인. 너무 예민해서 스치기만 해도 느낌.",
+    ririComment:
+      "얜 무슨 수도꼭지야? 건드리면 물이 나와. 청소하기 귀찮게!",
+    userLine: "하앙! 벌써 가버려! 으긋, 또 나와요...!",
+  },
+  {
+    id: "shasha",
+    name: "샤샤",
+    gender: "女",
+    race: "뱀",
+    traits: ["질 조임", "속박", "냉미녀"],
+    price: 28000,
+    rarity: 3,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "샤샤.png",
+    desc: "온몸으로 휘감는 뱀 수인. 한번 물면 절대 놓지 않는 명기.",
+    ririComment:
+      "질식사 조심해. 좋다고 껴안다가 주인 뼈 으스러진다?",
+    userLine: "내 안에서 숨 쉴 수 있겠어? 꽉 조여줄게.",
+  },
+  {
+    id: "sera",
+    name: "세라",
+    gender: "女",
+    race: "인간",
+    traits: ["타락수녀", "음문", "배덕감"],
+    price: 30000,
+    rarity: 3,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "세라.png",
+    desc: "타락한 수녀. 신을 찾으면서 음란한 짓을 할 때 희열을 느낌.",
+    ririComment:
+      "기도하면서 자위하는 꼴이라니. 진짜 변태는 여기 있었네.",
+    userLine: "신이시여... 이 음탕한 암캐를 벌해주소서...",
+  },
+  {
+    id: "pipi",
+    name: "피피",
+    gender: "女",
+    race: "하피",
+    traits: ["산란", "조류두뇌", "반짝이"],
+    price: 32000,
+    rarity: 3,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "피피.png",
+    desc: "반짝이는 걸 좋아하는 새 수인. 알을 낳는 배란 플레이 특화.",
+    ririComment:
+      "주인, 반짝이는 거 줘. 그럼 알 낳아줄게. 뾱!",
+    userLine: "주인님! 알 나와요! 따뜻한 거 나와요!",
+  },
+  {
+    id: "milti",
+    name: "밀티",
+    gender: "女",
+    race: "젖소",
+    traits: ["폭유/착유", "파이즈리", "봉사"],
+    price: 35000,
+    rarity: 3,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "밀티.png",
+    desc: "젖 짜주는 걸 좋아하는 소 수인. 가슴이 너무 커서 생활이 불편함.",
+    ririComment:
+      "진짜 무거워 보인다... 주인, 가서 좀 짜줘. 터지겠어.",
+    userLine: "젖이 퉁퉁 불어서 아파요... 빨리 짜주세요...",
+  },
+
+  {
+    id: "elena",
+    name: "엘레나",
+    gender: "女",
+    race: "인간",
+    traits: ["아이돌", "팬서비스", "타락"],
+    price: 50000,
+    rarity: 4,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "엘레나.png",
+    desc: "TV에 나오는 현역 아이돌. 카메라 뒤에서 노예로 전락함.",
+    ririComment:
+      "대박! 쟤 센터잖아? 팬들이 알면 거품 물고 쓰러지겠네. 킥킥.",
+    userLine: "팬들한테는 비밀이에요? 카메라 끄고 해요...",
+  },
+  {
+    id: "leona",
+    name: "레오나",
+    gender: "女",
+    race: "사자",
+    traits: ["정복감", "야외플", "프라이드"],
+    price: 60000,
+    rarity: 4,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "레오나.png",
+    desc: "자존심 센 사자 수인. 억지로 깔아뭉갤 때 정복감이 엄청남.",
+    ririComment:
+      "성질머리 하고는. 주인, 채찍 좀 가져올까? 기를 팍 죽여놔야지.",
+    userLine: "나를 깔아뭉개다니... 제법 수컷답구나.",
+  },
+  {
+    id: "erin",
+    name: "에린",
+    gender: "女",
+    race: "엘프",
+    traits: ["나체주의", "천연", "야외섹스"],
+    price: 70000,
+    rarity: 4,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "에린.png",
+    desc: "숲에서 온 드루이드. 옷 입는 걸 싫어해서 자꾸 벗으려 함.",
+    ririComment:
+      "아니, 왜 자꾸 벗어? ...뭐, 보는 우리는 좋지만.",
+    userLine: "왜 옷을 입어? 이게 더 자연스럽잖아?",
+  },
+  {
+    id: "kaira",
+    name: "카이라",
+    gender: "女",
+    race: "D.엘프",
+    traits: ["암살자", "구속구", "태닝피부"],
+    price: 75000,
+    rarity: 4,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "카이라.png",
+    desc: "고통을 즐기는 다크엘프. 묶고 때려야 좋아하는 진성 M.",
+    ririComment:
+      "쟤는 때려달라고 애원하네. 주인 취향 참 하드하다~",
+    userLine: "크윽... 더 세게 묶어. 아직 부족해!",
+  },
+  {
+    id: "lucy",
+    name: "루시",
+    gender: "女",
+    race: "뱀파이어",
+    traits: ["흡혈섹스", "로리바바", "고스"],
+    price: 88000,
+    rarity: 4,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "루시.png",
+    desc: "피를 마셔야 흥분하는 뱀파이어. 관짝에서 하는 걸 좋아함.",
+    ririComment:
+      "합법 로리 할망구네. 피 빨리기 싫으면 철분제 좀 챙겨 먹어.",
+    userLine: "네 피... 비릿한데 꽤 달콤하네. 더 줘.",
+  },
+  {
+    id: "ari",
+    name: "아리",
+    gender: "女",
+    race: "구미호",
+    traits: ["정기흡수", "착정", "9꼬리"],
+    price: 100000,
+    rarity: 4,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "아리.png",
+    desc: "남자를 말라죽이는 꽃뱀. 꼬리 9개로 하는 애무가 환상적.",
+    ririComment:
+      "주인, 조심해. 쟤랑 하면 다음 날 못 일어날걸? 쪽 빨린다?",
+    userLine: "오빠, 벌써 지쳤어? 한 방울도 남기지 마♡",
+  },
+  {
+    id: "ririka",
+    name: "리리카",
+    gender: "女",
+    race: "서큐버스",
+    traits: ["최면/세뇌", "꿈조작", "코스프레"],
+    price: 120000,
+    rarity: 4,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "리리카.png",
+    desc: "꿈을 조작하는 몽마. 유저가 원하는 어떤 상황이든 연출 가능.",
+    ririComment:
+      "주문만 해. 여동생? 선생님? 쟤가 다 연기해 줄 거야.",
+    userLine: "자, 눈을 보세요... 당신은 제 개가 됩니다...",
+  },
+  {
+    id: "bella",
+    name: "벨라",
+    gender: "女",
+    race: "서큐버스",
+    traits: ["누님", "안면기승", "폭유"],
+    price: 130000,
+    rarity: 4,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "벨라.png",
+    desc: "리리카보다 성숙한 육체파 서큐버스. 질식할 듯한 포옹을 선호.",
+    ririComment:
+      "응애~ 하고 싶어? 저 언니 가슴에 파묻히면 질식사 확정이야.",
+    userLine: "어머, 귀여워라. 누나 가슴에 파묻혀서 갈래?",
+  },
+
+  {
+    id: "esdeth",
+    name: "에스데스",
+    gender: "女",
+    race: "마족",
+    traits: ["여왕/펨돔", "제복", "매도"],
+    price: 300000,
+    rarity: 5,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "에스데스.png",
+    desc: "남을 짓밟는 마계 장교. 유저를 가축 취급하지만 침대에선 M으로 변함.",
+    ririComment:
+      "와... 포스 봐. 내가 주인만 아니었으면 벌써 무릎 꿇었다.",
+    userLine: "바닥을 기어라, 가축. 내 구두가 더럽혀졌잖아?",
+  },
+  {
+    id: "rin",
+    name: "린",
+    gender: "女",
+    race: "용족",
+    traits: ["처녀/역린", "신비주의", "발열"],
+    price: 450000,
+    rarity: 5,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "린.png",
+    desc: "고고한 동양의 용. 역린을 건드리면 극도의 흥분 상태가 됨.",
+    ririComment:
+      "용의 역린을 건드린다니... 주인, 목숨이 여러 개야? (팝콘 냠냠)",
+    userLine: "감히 용의 역린을 건드려...? 책임지거라.",
+  },
+  {
+    id: "isilia",
+    name: "이실리아",
+    gender: "女",
+    race: "H.엘프",
+    traits: ["왕녀", "오만", "강제임신"],
+    price: 600000,
+    rarity: 5,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "이실리아.png",
+    desc: "고귀한 하이엘프 왕녀. 왕족의 자존심을 꺾고 임신시키는 맛.",
+    ririComment:
+      "왕녀님 오셨네~ 저 콧대를 아주 바닥까지 꺾어줘야지?",
+    userLine: "이, 이 천한 것이... 감히 왕녀의 옥체 안에...!",
+  },
+  {
+    id: "angelica",
+    name: "안젤리카",
+    gender: "女",
+    race: "천사",
+    traits: ["타락성녀", "아헤가오", "날개애무"],
+    price: 800000,
+    rarity: 5,
+    owned: false,
+    isNew: false,
+    img: ABY_IMG_BASE + "안젤리카.png",
+    desc: "신성력을 잃고 타락한 천사. 더럽혀질수록 더 큰 쾌락을 느낌.",
+    ririComment:
+      "천사 깃털 뽑아봤어? 쟤는 뽑으면 느낀다던데? 해볼까?",
+    userLine: "하으응! 천계가... 하얘져요... 더럽혀져...!",
+  },
+  {
+    id: "tiamat",
+    name: "티아마트",
+    gender: "女",
+    race: "드래곤",
+    traits: ["세계관최강", "폴리모프", "산란"],
+    price: 1000000,
+    rarity: 5,
+    owned: false,
+    isNew: true,
+    img: ABY_IMG_BASE + "티아마트.png",
+    desc: "유희를 즐기러 온 드래곤 로드. 인간을 알주머니 정도로 생각함.",
+    ririComment:
+      "미친... 드래곤?! 주인, 그냥 절해. 우리가 키우는 게 아니라 모시는 거야!",
+    userLine: "호오, 제법 굵직하구나. 내 알주머니가 되어라.",
+  },
+];
+
+ABY_DEFAULT_SLAVES.forEach((s) => {
+  if (!s.img) return;
+  const alt = s.img.replace(/(\.[a-zA-Z0-9]+)$/, "1$1");
+  if (!s.statusImg) s.statusImg = alt;
+  if (!s.posterImg) s.posterImg = alt;
+});
+
+const ABY_ITEMS_COMMON = [
+  {
+    id: 'slime-gel-hot',
+    name: '무한 슬라임 젤',
+    kind: '공통 아이템',
+    effect: '화끈거리는 윤활 & 밀착',
+    price: 50,
+    rarity: 1,
+    icon: '💧',
+    desc: `주인, 젤 마르는 거 짜증 나지? 이건 마계 슬라임을 갈아 넣어서 절대 안 말라. 게다가 그냥 미끌거리는 게 아냐. 바르면 보지 내벽이 화끈화끈 달아오르거든? 자지를 넣자마자 애들이 "히익, 뜨거워!" 하고 놀라면서 꽉 물어버릴걸? 그 쪼임이 아주 예술이라니까? 츄라이!`,
+  },
+  {
+    id: 'pink-heart-candy',
+    name: '핑크 하트 캔디',
+    kind: '공통 아이템',
+    effect: '긴장 완화 & 약한 흥분',
+    price: 100,
+    rarity: 1,
+    icon: '🍬',
+    desc: `약 쓰는 건 좀 무겁다 싶을 때 딱이야. 그냥 사탕처럼 까서 먹여. 10분만 지나봐. 얼굴 빨개지고 보지가 축축하게 젖어들기 시작할 거야. 평소에 청소시킬 때 하나 물려주면, 보지가 가려워서 몸을 베배 꼬면서 일하는 꼴을 볼 수 있어. 히히, 꼴리지?`,
+  },
+  {
+    id: 'safety-potion-24h',
+    name: '세이프티 포션',
+    kind: '공통 아이템',
+    effect: '피임 & 질내사정 허가',
+    price: 30,
+    rarity: 1,
+    icon: '🛡️',
+    desc: `에이, 주인. 설마 쫄보처럼 쌀 때마다 뺄 거야? 그건 사나이가 아니지~ 이거 마시면 24시간 동안 임신 걱정 끝! 배꼽 아래 하트 문신 뜨는 거 보이지? 그게 안심 신호야. 그냥 자궁 끝까지 쳐박고 콘돔 없이 맘껏 정액 싸질러도 돼!`,
+  },
+  {
+    id: 'clean-scroll-once',
+    name: '클린 마법 주문서',
+    kind: '공통 아이템',
+    effect: '즉시 세정 & 증거 인멸',
+    price: 10,
+    rarity: 1,
+    icon: '🧹',
+    desc: `잔뜩 싸고 나서 축축한데 씻으러 가기 귀찮지? 시간 아깝잖아. 이거 한 장 찢어서 쓱 문질러봐. 침대 시트는 물론이고, 보지에서 흘러나온 정액이랑 애액까지 빛이랑 같이 한 방에 증발해! 순식간에 뽀송해진 구멍에 바로 한 번 더 박을 수 있게 해주는 효자템이라니까?`,
+  },
+  {
+    id: 'first-milk-drink',
+    name: '초유 영양 드링크',
+    kind: '공통 아이템',
+    effect: '체력 회복 & 성욕 리셋',
+    price: 150,
+    rarity: 1,
+    icon: '🥛',
+    desc: `주인이 너무 박아대서 애가 기절했어? 아직 한 발 남았는데? 그럴 때 억지로 입 벌리고 이거 먹이는 거야. 편의점 핫식스 같은 거지. 마시면 눈 번쩍 뜨고 체력 회복해서, 다시 엉덩이 치켜들고 박힐 준비 하게 만들어줘. 뽕을 뽑아야지, 안 그래?`,
+  },
+
+  {
+    id: 'wireless-rotor-stealth',
+    name: '투명 무선 로터',
+    kind: '공통 아이템',
+    effect: '상시 자극 & 방치 플레이',
+    price: 200,
+    rarity: 2,
+    icon: '📳',
+    desc: `어디서나 볼 수 있는 거지만 성능은 확실해. 작고 조용하거든. 그냥 보지 깊숙이 꽂아두고 하루 종일 생활하게 시켜봐. 도망가거나 말 안 듣는다? 주머니에서 리모컨 꺼내서 꾹! 눌러주면 끝이야. 다리 풀려서 주저앉고 애액 지리는 거 구경하는 게 얼마나 꿀잼인데.`,
+  },
+  {
+    id: 'gag-blindfold-set',
+    name: '개구기 & 안대 세트',
+    kind: '공통 아이템',
+    effect: '감각 차단 & 공포',
+    price: 500,
+    rarity: 2,
+    icon: '😶‍🌫️',
+    desc: `가끔은 그냥 고기 인형처럼 다루고 싶을 때 있잖아? 입은 억지로 쫙 벌려놓고, 눈은 가려서 아무것도 못 보게 만들어. 가만히 묶어두고 유두나 클리만 살살 건드려줘도, 앞이 안 보이니까 무서워서 벌벌 떨면서 보짓물을 질질 싸. 반응 죽여준다니까?`,
+  },
+  {
+    id: 'expanding-air-plug',
+    name: '확장형 에어 플러그',
+    kind: '공통 아이템',
+    effect: '구멍 확장 & 헐거움',
+    price: 400,
+    rarity: 2,
+    icon: '🎈',
+    desc: `그냥 박기만 하면 구멍이 안 넓어지잖아? 이건 넣고 펌프질하면 풍선처럼 커져. 보지나 항문에 쑤셔 박고 한계까지 부풀려봐. 비명 지르면서 배가 빵빵해지는데... 나중에 바람 빼고 뽑으면? 구멍이 뻐끔뻐끔 닫히지도 않고 헐렁해져서 자궁 입구까지 훤히 다 보여. 그 넓어진 구멍에 주먹 넣는 맛이 쏠쏠하지.`,
+  },
+  {
+    id: 'enema-slime-deep',
+    name: '관장용 슬라임',
+    kind: '공통 아이템',
+    effect: '배설감의 쾌락화',
+    price: 150,
+    rarity: 2,
+    icon: '🫧',
+    desc: `뒷구멍 쓸 때 똥 나올까 봐 걱정되지? 이걸로 한 방에 해결해. 항문에 슬라임을 주입하면 장속 찌꺼기를 싹 녹여서 배출해주거든. 근데 이게 부작용이 있어. 배설감이 쾌감으로 바뀌어서, 나중엔 똥 싸는 자세로 엎드려 놓고 박아주면 좋아서 자지러져. 더러운 년 취급하기 딱 좋아.`,
+  },
+  {
+    id: 'lewd-tattoo-sticker',
+    name: '음란 문신 스티커',
+    kind: '공통 아이템',
+    effect: '낙인 & 성감 증폭',
+    price: 50,
+    rarity: 2,
+    icon: '🔞',
+    desc: `주인 거라는 표시를 확실하게 해야지? 아랫배나 엉덩이에 붙여봐. "육변기", "정액 받이", "발정" 같은 글자가 마력으로 피부에 새겨져. 이게 붙어있는 동안엔 성감도가 2배로 올라서, 거울 보여주면서 "넌 육변기야"라고 읽게 시키면 수치심 때문에 보짓물이 멈추질 않아.`,
+  },
+
+  {
+    id: 'pheromone-handcream',
+    name: '페로몬 핸드크림',
+    kind: '공통 아이템',
+    effect: '접촉성 최음 & 강제 발정',
+    price: 1200,
+    rarity: 3,
+    icon: '🖐️',
+    desc: `이건 주인의 손을 마약으로 만드는 크림이야. 바르고 만지는 순간 피부가 타들어가듯 뜨거워지면서 전신이 성감대로 변해. 그냥 머리만 쓰다듬어도 허리를 활처럼 튕기며 보짓물을 왈칵 쏟아내고, 허벅지 안쪽을 스치면 보지가 제멋대로 벌름거리며 팬티를 다 적셔. 결국 이성 잃고 주인 손을 자기 가랑이 사이로 끌고 가서 "제발 쑤셔주세요"라고 빌게 만든다니까?`,
+  },
+  {
+    id: 'mana-rotor-womb',
+    name: '마나 진동 로터',
+    kind: '공통 아이템',
+    effect: '자궁 직접 타격 & 강제 절정',
+    price: 3000,
+    rarity: 3,
+    icon: '💠',
+    desc: `단순한 진동이 아니라 마력 파동을 자궁 내벽에 직접 쏘아댐. 1단계만 켜도 자궁이 으깨지는 듯한 쾌감에 눈이 풀리고 입에서 침을 질질 흘림. 보지 깊숙한 곳을 긁어내는 자극 때문에 다리에 힘이 풀려 주저앉고, 주인의 허락 없이는 절대 멈추지 않는 분수를 뿜으며 바닥을 흥건하게 적심.`,
+  },
+  {
+    id: 'cm-milk',
+    name: '모유 촉진 주사',
+    kind: '공통 아이템',
+    effect: '영구적 모유 분비',
+    price: 800,
+    rarity: 3,
+    icon: '💉',
+    desc: `임신도 안 했는데 가슴에서 우유가 나오게 만드는 주사야. 한 방만 놔주면 유두가 퉁퉁 붓고 예민해져서, 스치기만 해도 모유가 뷰룻뷰룻 새어 나와. 나중엔 가슴이 빵빵하게 뭉쳐서 아프니까, 제발 젖 좀 짜달라고 주인한테 기어 와서 가슴 들이밀게 될걸? 인간 젖소 만드는 거지 뭐.`,
+  },
+  {
+    id: 'egg-vibe-set',
+    name: '진동 산란알 세트',
+    kind: '공통 아이템',
+    effect: '자궁 유린 & 산란 페티시',
+    price: 1500,
+    rarity: 3,
+    icon: '🥚',
+    desc: `탁구공만한 알 10개를 보지 깊숙이 자궁까지 밀어 넣는 거야. 배가 임신한 것처럼 불룩 튀어나오는데, 버튼 누르면 뱃속에서 알들이 미친 듯이 굴러다녀. 자궁 안을 휘젓고 다니니까 애가 눈 뒤집고 거품 물면서 가버려. 마치 짐승한테 당해서 알 낳는 기분이라나 뭐라나?`,
+  },
+  {
+    id: 'hypno-video-mindbreak',
+    name: '최면 세뇌 비디오',
+    kind: '공통 아이템',
+    effect: '자아 붕괴 & 백치화',
+    price: 2500,
+    rarity: 3,
+    icon: '📺',
+    desc: `몸으로 하는 조교가 힘들면 머리를 써야지. VR 헤드셋 씌우고 이거 틀어줘. 30분 동안 노이즈 영상이랑 "나는 주인의 변기통입니다" 같은 소리만 계속 들려주거든? 벗기면 수치스러워하던 년도, 이거 보고 나면 초점 없는 눈으로 침 질질 흘리면서 "자지 주세요" 하고 다리부터 벌려. 뇌가 녹아서 짐승 되는 거지.`,
+  },
+  {
+    id: 'fallen-saint-holywater',
+    name: '타락 성녀의 성수',
+    kind: '공통 아이템',
+    effect: '배변 통제 상실 & 수치심 타락',
+    price: 5000,
+    rarity: 3,
+    icon: '💧',
+    desc: `보지와 항문 근처에 뿌리는 순간 괄약근 조절 능력이 박살 남. 참으려고 허벅지를 비비 꼬지만, 결국 오줌과 애액이 동시에 터져 나와 다리를 타고 줄줄 흐름. 축축하게 젖은 채 수치스러워하면서도, 배설하는 감각이 쾌감으로 변질되어 오줌을 싸면서 동시에 눈 뒤집고 가버리는 추태를 부리게 된다니까!`,
+  },
+  {
+    id: 'futa-potion-ts',
+    name: '후타나리 포션',
+    kind: '공통 아이템',
+    effect: '성별 변화 & 자가 발전',
+    price: 8000,
+    rarity: 3,
+    icon: '⚧️',
+    desc: `가끔은 박는 거 말고, 애들끼리 비비는 거 보고 싶지 않아? 이거 먹이면 클리토리스가 자지처럼 커져서 덜렁거려. 사정도 가능하다니까? 여자애 둘한테 먹여서 서로 박게 시키거나, 커진 클리로 주인 똥꼬 핥게 시키는 플레이... 아, 주인 취향 맞지? 히히!`,
+  },
+  {
+    id: 'dragon-breeding-drink',
+    name: '드래곤의 초정',
+    kind: '공통 아이템',
+    effect: '임신 확정 & 이성 붕괴',
+    price: 10000,
+    rarity: 3,
+    icon: '🐲',
+    desc: `한 모금만 마셔도 뇌가 녹아내려 눈이 뒤집히고 혀를 축 늘어뜨린 채 개처럼 헐떡임. 자궁이 타들어가듯 뜨거워져서, 바닥을 기어 다니며 주인 바짓가랑이를 물어뜯고 "제발 자지 넣어주세요, 임신시켜 주세요!"라고 울부짖게 됨. 한 번 안에 싸지르면 자궁이 정액을 놓치지 않으려 꽉 물고 늘어져서, 자지가 뽑히지 않는 상태로 계속 박히게 된다니까!.`,
+  },
+];
+
+const ABY_ITEMS_PERSONAL = [
+  {
+    id: 'kim-nayoung-toy',
+    name: '주인님 냄새 향수 (페브리즈)',
+    kind: '김나영 전용',
+    target: '김나영',
+    effect: '애정 결핍 / 심신 안정',
+    price: 400,
+    rarity: 2,
+    icon: '🧴',
+    desc: `그냥 섬유탈취제지만 "주인님 체취 추출물"이라고 뻥치고 줌. 잘 때마다 베개에 미친 듯이 뿌리고 킁카킁카함. 다 쓰면 금단현상 옴.`,
+    ririComment: `저거 마트에서 1+1 하는 건데... 나영이 쟤는 저게 진짜 네 냄새인 줄 알고 엄청 아끼더라. 좀 짠하네.`,
+  },
+  {
+    id: 'lee-sehee-toy',
+    name: '짝퉁 명품백 (시장표)',
+    kind: '이세희 전용',
+    target: '이세희',
+    effect: '속물근성 / 허세',
+    price: 300,
+    rarity: 2,
+    icon: '👜',
+    desc: `로고 철자가 미묘하게 틀린 가방(SHANEL). 진짜라고 우기며 들고 다니는데, 남들이 자세히 볼까 봐 전전긍긍함. 안에 콘돔만 가득 들어있음.`,
+    ririComment: `야, "샤넬"이 아니라 "채널"이라고 써있는데? 쟤 저거 들고 강남 갔다가 개망신 당하는 거 아니야? 풉.`,
+  },
+  {
+    id: 'kang-sohee-toy',
+    name: '무한 뽁뽁이 (피젯 토이)',
+    kind: '강소희 전용',
+    target: '강소희',
+    effect: '단순무식 / 무한체력',
+    price: 400,
+    rarity: 2,
+    icon: '🫧',
+    desc: `누르면 다시 튀어나오는 실리콘 뽁뽁이. 훈련이라 생각하고 진지한 표정으로 하루 종일 누름. 손가락 근육만 비대해짐.`,
+    ririComment: `소희 쟤는 저걸로 무슨 손가락 팔굽혀펴기를 하던데? 저게 안 찢어지는 게 더 신기해.`,
+  },
+  {
+    id: 'han-sua-toy',
+    name: '퇴치 스프레이 (맹물)',
+    kind: '한수아 전용',
+    target: '한수아',
+    effect: '겁쟁이 / 플라시보',
+    price: 300,
+    rarity: 2,
+    icon: '🧯',
+    desc: `분무기에 물 담아준 것. "이거 뿌리면 괴물 안 와"라고 하면 부적처럼 쥐고 다님. 바퀴벌레 나오면 비명 지르면서 난사해서 물바다 만듦.`,
+    ririComment: `수아 젖은 거 봤어? 괴물 잡겠다고 허공에 뿌리다가 자기가 다 맞았대. 안경에 김 서린 꼴 좀 봐.`,
+  },
+  {
+    id: 'song-jieun-toy',
+    name: '장난감 마이크 (에코 기능)',
+    kind: '송지은 전용',
+    target: '송지은',
+    effect: '관종 / 방송 본능',
+    price: 400,
+    rarity: 2,
+    icon: '🎤',
+    desc: `스위치 켜면 화려한 LED와 함께 에코 빵빵하게 들어감. 어디서든 방송 톤으로 "여러분~ 별풍선 감사합니다!" 멘트 날림. 시끄러움 주의.`,
+    ririComment: `아, 귀 따가워! 쟤는 저 싸구려 마이크 하나 쥐여주면 거기가 무대인 줄 안다니까. 춤추는 꼴 좀 보라지.`,
+  },
+  {
+    id: 'choi-yuri-toy',
+    name: '휴대용 돌돌이 (먼지 제거기)',
+    kind: '최유리 전용',
+    target: '최유리',
+    effect: '결벽증 / 강박',
+    price: 300,
+    rarity: 2,
+    icon: '🧹',
+    desc: `옷에 묻은 먼지 떼는 테이프 클리너. 보자마자 눈 돌아가서 크리에이터 옷부터 시작해 온 집안을 굴리고 다님. 스타킹에 먼지 묻는 거 극혐함.`,
+    ririComment: `유리 쟤는 데이트하자고 불러도 저거 들고 나와서 네 옷에 머리카락 떼고 있을걸? 청소부 고용했냐?`,
+  },
+  {
+    id: 'jung-hyejin-toy',
+    name: '대형 주사기 (볼펜)',
+    kind: '정혜진 전용',
+    target: '정혜진',
+    effect: '새디스트 / 직업병',
+    price: 300,
+    rarity: 2,
+    icon: '💉',
+    desc: `팔뚝만 한 장난감 주사기(사실은 빨간 잉크 볼펜). "환자분, 주사 맞을 시간이에요~" 하면서 엉덩이 찌르는 시늉함. 맞으면 은근히 따끔함.`,
+    ririComment: `간호사가 주사는 안 놓고 저런 장난감으로 사람 찔러도 되는 거야? 웃으면서 찌르니까 더 무서워.`,
+  },
+
+  {
+    id: 'park-minjung-toy',
+    name: "'참 잘했어요' 도장 세트",
+    kind: '박민정 전용',
+    target: '박민정',
+    effect: '모성애 / 칭찬 강박',
+    price: 400,
+    rarity: 3,
+    icon: '📛',
+    desc: `크리에이터 몸 이곳저곳에 도장을 찍어주고 싶어 함. "우리 아기 착하다~" 하면서 이마나 배에 쾅 찍음. 지워지기 힘든 유성 잉크임.`,
+    ririComment: `민정 아줌마, 남편 잃고 외롭다더니 너를 아들 취급하는 거 아니야? 배꼽 옆에 도장 자국 뭐냐고 ㅋㅋㅋ`,
+  },
+  {
+    id: 'coco-toy',
+    name: '해바라기씨 한 포대',
+    kind: '코코 전용',
+    target: '코코',
+    effect: '식탐 / 저장 강박',
+    price: 400,
+    rarity: 3,
+    icon: '🌻',
+    desc: `자기 몸보다 큰 자루를 받으면 행복해서 기절함. 볼 주머니에 무한정 쑤셔 넣어서 얼굴이 터질 듯 빵빵해짐. 뺏으려 하면 뭄.`,
+    ririComment: `햄스터 볼이 저렇게까지 늘어나? 욕심쟁이 녀석, 저러다 입 찢어지겠다. 건드리면 "찍!" 하고 화낸다?`,
+  },
+  {
+    id: 'mary-toy',
+    name: '양 세는 계수기',
+    kind: '매리 전용',
+    target: '매리',
+    effect: '수면간 / 멍함',
+    price: 300,
+    rarity: 3,
+    icon: '🔢',
+    desc: `딸깍거리는 계수기. "한 마리... 두 마리..." 세다가 10을 못 넘기고 잠듦. 자면서도 무의식적으로 버튼 누름. 깨우면 화냄.`,
+    ririComment: `쟤는 그냥 숨 쉬는 것도 귀찮아서 기계로 세는 거야. 저거 뺏으면 베개로 쓴다에 내 손목 건다.`,
+  },
+  {
+    id: 'mimi-toy',
+    name: '삑삑이 뼈다귀',
+    kind: '미미 전용',
+    target: '미미',
+    effect: '복종 / 개 본능',
+    price: 400,
+    rarity: 3,
+    icon: '🦴',
+    desc: `던지면 "멍!" 하고 네발로 달려가서 물어옴. 침 범벅을 만들어서 다시 손에 쥐여줌. 안 던져주면 다리에 매달려서 허리 흔듦.`,
+    ririComment: `미미야... 넌 인간이야, 개야? 꼬리 프로펠러 돌아가는 거 봐라. 바닥에 지린 거 아니지?`,
+  },
+  {
+    id: 'nabi-toy',
+    name: '레이저 포인터',
+    kind: '나비 전용',
+    target: '나비',
+    effect: '도도함 / 사냥 본능',
+    price: 300,
+    rarity: 3,
+    icon: '🔦',
+    desc: `평소엔 도도한 척하지만, 빨간 점만 보이면 동공 확장돼서 우다다다 뛰어다님. 잡으려고 냥냥펀치 날리다 벽에 박음.`,
+    ririComment: `"흥, 저딴 거에 안 속아!"라면서 몸은 이미 점프하고 있는데? 엉덩이 씰룩거리는 거 개웃겨 ㅋㅋㅋ`,
+  },
+  {
+    id: 'luna-toy',
+    name: '토끼 귀 머리띠 (진동 기능)',
+    kind: '루나 전용',
+    target: '루나',
+    effect: '청각 예민 / 상시 발정',
+    price: 500,
+    rarity: 3,
+    icon: '🐰',
+    desc: `귀 부분에서 미세한 진동이 울림. 예민한 진짜 귀랑 겹쳐서 착용하면 자지러짐. "이, 이상한 소리가 들려요..!" 하며 다리 꼼지락거림.`,
+    ririComment: `쟤는 귀만 만져도 가버리는데 저런 걸 씌우냐? 악취미야 정말. 얼굴 빨개져서 숨 헐떡이는 거 봐.`,
+  },
+  {
+    id: 'shasha-toy',
+    name: '핫팩 (대용량)',
+    kind: '샤샤 전용',
+    target: '샤샤',
+    effect: '변온 동물 / 집착',
+    price: 300,
+    rarity: 3,
+    icon: '🔥',
+    desc: `차가운 몸을 녹이려고 핫팩에 온몸을 칭칭 감음. 따뜻해지면 나른하게 풀려서 아무 저항도 안 함. 이때가 장난치기 딱 좋음.`,
+    ririComment: `뱀이 똬리 틀듯이 핫팩을 감싸 안고 있네. 지금 건드려도 모를걸? 혀 날름거리는 속도가 느려졌어.`,
+  },
+  {
+    id: 'sera-toy',
+    name: '십자가 모양 양초 (저온초)',
+    kind: '세라 전용',
+    target: '세라',
+    effect: '배덕감 / 마조히즘',
+    price: 300,
+    rarity: 3,
+    icon: '🕯️',
+    desc: `기도하는 척하면서 촛농을 자기 몸에 떨어뜨림. "아윽, 주님..!" 하면서 느끼는 표정이 압권. 성스러운 척하지만 사실 즐기는 중.`,
+    ririComment: `성녀님? 아니지, 변태 수녀님이지. 저거 기도용 초 아니고 SM용 저온초인 거 알고 쓰는 거 맞지?`,
+  },
+  {
+    id: 'pipi-toy',
+    name: '반짝이 스티커 세트',
+    kind: '피피 전용',
+    target: '피피',
+    effect: '조류 두뇌 / 반짝이 집착',
+    price: 400,
+    rarity: 3,
+    icon: '✨',
+    desc: `온몸의 맨살에 반짝이 스티커를 덕지덕지 붙임. "나 빛나? 예뻐?" 하면서 날개 파닥거림. 뗄 때 털 뽑혀서 아파함.`,
+    ririComment: `까마귀도 아니고... 야, 중요한 부위에는 붙이지 마! 뗄 때 어쩌려고 그래? 멍청한데 귀엽네.`,
+  },
+  {
+    id: 'milti-toy',
+    name: '젖소 무늬 잠옷 (엉덩이 뚫림)',
+    kind: '밀티 전용',
+    target: '밀티',
+    effect: '순박함 / 봉사 욕구',
+    price: 300,
+    rarity: 3,
+    icon: '🐄',
+    desc: `젖소 코스프레 잠옷. 입혀주면 "음메~ 주인님, 밥 줄 시간인가요?" 하며 네발로 기어 옴. 착유 당할 준비 자세를 취함.`,
+    ririComment: `와... 진짜 소가 된 줄 아나 봐. 저 덩치에 저런 귀여운 잠옷이라니, 파괴력 미쳤다.`,
+  },
+
+  {
+    id: 'elena-toy',
+    name: '공주 지팡이 (멜로디 완구)',
+    kind: '엘레나 전용',
+    target: '엘레나',
+    effect: '수치심 / 무대 의상',
+    price: 400,
+    rarity: 4,
+    icon: '🪄',
+    desc: `버튼 누르면 "뾰로롱~ 정의의 이름으로!" 소리 남. 무대 의상 입고 저거 휘두르라고 시키면 얼굴 터지려고 함. 근데 시키면 또 함.`,
+    ririComment: `아이돌의 자본주의 미소란... 속으로는 집에 가고 싶어 죽겠지? 그래도 팬 서비스라고 윙크하는 거 봐라. 독하다 독해.`,
+  },
+  {
+    id: 'leona-toy',
+    name: '대형 캣닢 쿠션 (마약 방석)',
+    kind: '레오나 전용',
+    target: '레오나',
+    effect: '게으름 / 고양이과',
+    price: 400,
+    rarity: 4,
+    icon: '🐱',
+    desc: `백수의 왕이라며 거들떠도 안 보려다가, 냄새 맡는 순간 이성 로그아웃. 침 흘리며 뒷발 팡팡 차기 시전. 골골송 부름.`,
+    ririComment: `프라이드? 웃기지 말라 그래. 저 쿠션 하나면 천하의 사자왕도 그냥 덩치 큰 고양이라니까. 배 까뒤집은 거 좀 봐!`,
+  },
+  {
+    id: 'erin-toy',
+    name: '바디 페인팅 물감 (녹색)',
+    kind: '에린 전용',
+    target: '에린',
+    effect: '천연 / 나체주의',
+    price: 500,
+    rarity: 4,
+    icon: '🎨',
+    desc: `옷 입기 싫어해서, 몸에 칠하면 "자연의 옷"이라고 속임. 온몸에 칠하고 숲인 척 서있음. 비 오면 씻겨 내려가서 알몸 됨.`,
+    ririComment: `엘프 지능 실화냐? 저걸 옷이라고 믿고 당당하게 걸어 다니네. 비 오면 대참사 예약이다.`,
+  },
+  {
+    id: 'kaira-toy',
+    name: '개목걸이 (핑크색 큐빅)',
+    kind: '카이라 전용',
+    target: '카이라',
+    effect: 'M성향 / 구속',
+    price: 600,
+    rarity: 4,
+    icon: '⛓️',
+    desc: `암살자의 긍지는 어디 가고, 채워주면 얌전해짐. "이건 굴욕이다..."라고 말하면서도 목줄 당기면 순순히 끌려옴. 은근히 즐김.`,
+    ririComment: `야생마를 길들이는 맛이 이런 건가? 저 살벌한 다크엘프가 목줄 하나에 강아지처럼 구네.`,
+  },
+  {
+    id: 'lucy-toy',
+    name: '토마토 주스 팩',
+    kind: '루시 전용',
+    target: '루시',
+    effect: '귀차니즘 / 혈액 의존',
+    price: 500,
+    rarity: 4,
+    icon: '🧃',
+    desc: `진짜 피인 줄 알고 빨대 꽂아 쪽쪽 빰. 맛이 이상하다면서도 귀찮아서 그냥 다 마심. 입가에 붉게 묻히고 "피가 부족해..." 중얼거림.`,
+    ririComment: `할망구, 미각이 갔나? 케첩 맛 날 텐데 잘도 먹네. 다 먹고 빈 팩 던지는 폼이 딱 늙은이다.`,
+  },
+  {
+    id: 'ari-toy',
+    name: '황금 꼬리빗',
+    kind: '아리 전용',
+    target: '아리',
+    effect: '자기애 / 꼬리 관리',
+    price: 600,
+    rarity: 4,
+    icon: '🪮',
+    desc: `꼬리 털 빗어주면 여우 가면 벗어던지고 녹아내림. "거기, 좀 더..." 하며 엉덩이 들이밈. 페로몬 줄줄 흘러나옴.`,
+    ririComment: `구미호가 빗질 한 번에 가는구나. 눈 풀린 거 봐. 저러다 정기 빨리기 딱 좋으니 조심해라?`,
+  },
+  {
+    id: 'ririka-toy',
+    name: '블루라이트 차단 안경',
+    kind: '리리카 전용',
+    target: '리리카',
+    effect: '비즈니스 / 요망함',
+    price: 400,
+    rarity: 4,
+    icon: '👓',
+    desc: `지적인 비서 코스프레용. 알도 없는 안경테 올리면서 "사장님, 스케줄 확인하시죠"라며 유혹함. 사실 일할 생각 1도 없음.`,
+    ririComment: `일하는 척하면서 책상 밑으로 발 들어오는 거 봤지? 안경 낀 서큐버스는 반칙 아니냐고.`,
+  },
+  {
+    id: 'bella-toy',
+    name: '최면용 추 (500원짜리)',
+    kind: '벨라 전용',
+    target: '벨라',
+    effect: '최면 / 몽마',
+    price: 500,
+    rarity: 4,
+    icon: '🌀',
+    desc: `자기가 최면 걸어야 하는데, 추 흔들다가 자기가 최면 걸려버림. 눈 뱅글뱅글 돌면서 "레드 썬..." 하고 쓰러져서 코 곯.`,
+    ririComment: `바보 언니... 남 재우려다 자기가 자네. 저 무방비한 가슴 좀 봐. 지금이 기회다, 덮쳐!`,
+  },
+
+  {
+    id: 'esdeth-toy',
+    name: 'LED 광선검 (플라스틱)',
+    kind: '에스데스 전용',
+    target: '에스데스',
+    effect: 'S성향 / 허당',
+    price: 600,
+    rarity: 5,
+    icon: '🗡️',
+    desc: `마력 주입하면 빛나는 "마검"이라고 속임. 채찍 대신 휘두르다 플라스틱 찌그러지면 당황함. 밤에 몰래 켜보고 좋아함.`,
+    ririComment: `여왕님이 문방구 칼 들고 설치는 꼴이라니... 배터리 다 닳면 마력 고갈됐다고 난리 치겠네.`,
+  },
+  {
+    id: 'rin-toy',
+    name: '효자손 (신축형)',
+    kind: '린 전용',
+    target: '린',
+    effect: '역린 / 신비주의',
+    price: 600,
+    rarity: 5,
+    icon: '🪮',
+    desc: `손 안 닿는 역린 부위 긁어주면 용의 체면이고 뭐고 다 버리고 "흐앙!" 소리 지름. 다리 떨면서 더 긁어달라고 애원함.`,
+    ririComment: `용족의 약점이 고작 등 긁개라니... 무녀님 표정 관리 안 되죠? 침 닦으세요.`,
+  },
+  {
+    id: 'isilia-toy',
+    name: '보석 캔디 반지 (왕반지 사탕)',
+    kind: '이실리아 전용',
+    target: '이실리아',
+    effect: '오만함 / 당 섭취',
+    price: 600,
+    rarity: 5,
+    icon: '💍',
+    desc: `거대 루비 반지인 척 끼고 다니다 몰래 핥아먹음. 들키면 "마력 충전 중이다!"라고 우김. 손가락 끈적해져서 찝찝해함.`,
+    ririComment: `고귀한 왕녀님이 사탕 반지 빨고 있는 거 박제감이다. 다 먹고 플라스틱만 남았을 때 표정이 킬포인트.`,
+  },
+  {
+    id: 'angelica-toy',
+    name: '천사링 머리띠 (형광)',
+    kind: '안젤리카 전용',
+    target: '안젤리카',
+    effect: '타락 성녀 / 헌신',
+    price: 600,
+    rarity: 5,
+    icon: '👼',
+    desc: `진짜 천사링 잃어버려서 대신 씌워줌. 어두운 곳에서 형광 연두색으로 빛남. "제 빛이 보이시나요?"라며 성스러운 척함.`,
+    ririComment: `파티 용품점에서 산 건데... 저걸 쓰고 진지하게 기도하니까 배꼽 빠지겠네. 타락해도 천사는 천사인가 봐?`,
+  },
+  {
+    id: 'tiamat-toy',
+    name: '금박 초콜릿 (동전)',
+    kind: '티아마트 전용',
+    target: '티아마트',
+    effect: '탐욕 / 수집욕',
+    price: 600,
+    rarity: 5,
+    icon: '🪙',
+    desc: `반짝이니까 보물인 줄 알고 소중하게 챙김. 나중에 체온에 녹아서 손에 초콜릿 묻으면 "내 금이!!" 하고 당황함.`,
+    ririComment: `드래곤이 금을 좋아한다며? 500원짜리 초콜릿 던져주고 보물 취급하는 거 구경해 봐. 꿀잼이양!`,
+  },
+
+  {
+    id: 'kim-nayoung-core',
+    name: '주인님이 입던 후드티',
+    kind: '김나영 전용',
+    target: '김나영',
+    effect: '집착 / 체취',
+    price: 200,
+    rarity: 2,
+    icon: '🧥',
+    desc: `돈 주고도 못 사는 보물. 받자마자 코 박고 냄새 맡으며 안정감을 느낌. 잘 때 끌어안고 자며 온갖 망상을 함.`,
+    ririComment: `으... 냄새난다고 버리려는 걸 주워다가 보물단지처럼 모시네. 저거 입고 네 침대에서 뒹구는 거 봤어?`,
+  },
+  {
+    id: 'lee-sehee-core',
+    name: 'H사 명품 핸드백 (진품)',
+    kind: '이세희 전용',
+    target: '이세희',
+    effect: '속물 / 허영심',
+    price: 5000,
+    rarity: 2,
+    icon: '👜',
+    desc: `로고 확인하자마자 눈빛이 바뀜. "오빠, 오늘 밤 비워둘까?"라며 적극적으로 스킨십해옴. 바로 인스타 업로드 각.`,
+    ririComment: `역시 돈이 최고지? 가방 하나에 다리 벌리는 꼴이라니. 가성비... 아니, 가심비 좋네.`,
+  },
+  {
+    id: 'kang-sohee-core',
+    name: '대용량 웨이 프로틴',
+    kind: '강소희 전용',
+    target: '강소희',
+    effect: '근성장 / 단순함',
+    price: 200,
+    rarity: 2,
+    icon: '🏋️',
+    desc: `"근손실 걱정 없겠습니다!"라며 우렁차게 경례함. 운동 끝나고 땀에 젖은 채로 고맙다며 꽉 껴안아 줌 (압사 주의).`,
+    ririComment: `꽃다발보다 단백질 파우더를 더 좋아하는 여자는 얘밖에 없을 거야. 헬스장 데려가면 아주 좋아 죽겠네.`,
+  },
+  {
+    id: 'han-sua-core',
+    name: '고전압 전기충격기',
+    kind: '한수아 전용',
+    target: '한수아',
+    effect: '생존본능 / 의존',
+    price: 300,
+    rarity: 2,
+    icon: '⚡',
+    desc: `덜덜 떨던 손이 멈춤. 이걸 준 당신을 유일한 "보호자"로 인식하고 등 뒤에 딱 달라붙음. 의존도 대폭 상승.`,
+    ririComment: `겁쟁이한테 무기를 쥐여주면 어떻게 되는지 알아? 너만 믿고 따른다니까. 일종의 "각인" 효과지.`,
+  },
+  {
+    id: 'song-jieun-core',
+    name: '최신형 방송 조명 세트',
+    kind: '송지은 전용',
+    target: '송지은',
+    effect: '관종 / 자본주의',
+    price: 800,
+    rarity: 2,
+    icon: '💡',
+    desc: `"대박! 오빠, 나 이걸로 제로투 출게!"라며 리액션 폭발. 방송 켜고 당신을 "회장님"이라고 부르며 애교 부림.`,
+    ririComment: `조명판 받으니까 눈 돌아가는 거 봐라. 역시 관종은 장비빨이라니까. 오늘 서비스 좀 쩔겠는데?`,
+  },
+  {
+    id: 'choi-yuri-core',
+    name: '고급 가터벨트 & 스타킹',
+    kind: '최유리 전용',
+    target: '최유리',
+    effect: '음란 / 수치심',
+    price: 400,
+    rarity: 2,
+    icon: '🧦',
+    desc: `"이런 걸 업무 중에..."라면서도 화장실 가서 몰래 갈아입고 옴. 겉으론 철벽 치지만 다리는 꼬고 있음.`,
+    ririComment: `오피스룩의 완성은 스타킹이지. 겉으론 도도한 척하면서 속옷은 야한 거 입는 게 꼴포라니까.`,
+  },
+  {
+    id: 'jung-hyejin-core',
+    name: '수술용 메스 세트 (독일제)',
+    kind: '정혜진 전용',
+    target: '정혜진',
+    effect: '가학성 / 직업병',
+    price: 600,
+    rarity: 2,
+    icon: '🔪',
+    desc: `차가운 금속 날을 보며 황홀해함. "환자분, 어디부터 절개해 드릴까요?"라며 위험한 눈빛으로 다가옴. S성향 풀 충전.`,
+    ririComment: `간호사가 아니라 매드 닥터 아니냐고. 웃으면서 칼 드니까 진짜 무서운데... 그게 또 매력이긴 해.`,
+  },
+
+  {
+    id: 'park-minjung-core',
+    name: '현금 다발 (5만원권)',
+    kind: '박민정 전용',
+    target: '박민정',
+    effect: '현실주의 / 생계',
+    price: 2000,
+    rarity: 3,
+    icon: '💵',
+    desc: `"어머, 이렇게 큰돈을..."이라며 거절하는 척하다가 챙김. 죄책감과 고마움이 섞여서 밤에 확실하게 "보답"하려 함.`,
+    ririComment: `역시 미망인한텐 꽃보다 현금이지. 생활비 걱정 덜어주면 몸으로 갚는 게 이 바닥 국룰이야.`,
+  },
+  {
+    id: 'coco-core',
+    name: '볶은 아몬드 & 해바라기씨',
+    kind: '코코 전용',
+    target: '코코',
+    effect: '식탐 / 본능',
+    price: 300,
+    rarity: 3,
+    icon: '🥜',
+    desc: `양볼이 터지도록 입안 가득 쑤셔 넣음. 먹을 걸 준 사람을 "주인"으로 인식하고 손바닥 위에서 애교 부림.`,
+    ririComment: `단순해서 좋다. 먹이만 제때 주면 도망도 안 가고. 볼 빵빵할 때 뽀뽀해주면 좋아 죽음.`,
+  },
+  {
+    id: 'mary-core',
+    name: '라텍스 모션 베드',
+    kind: '매리 전용',
+    target: '매리',
+    effect: '수면욕 / 무방비',
+    price: 800,
+    rarity: 3,
+    icon: '🛏️',
+    desc: `눕자마자 3초 컷으로 기절. "주인님 맘대로 하세요..."라며 잠꼬대함. 저항 0%의 상태가 됨.`,
+    ririComment: `자는 애 건드리는 취미 있어? 뭐, 양 세는 것보다 침대 하나 사주는 게 효과는 확실하네. 꿀잠 자라.`,
+  },
+  {
+    id: 'mimi-core',
+    name: '최상급 마블링 육포',
+    kind: '미미 전용',
+    target: '미미',
+    effect: '식욕 / 복종',
+    price: 300,
+    rarity: 3,
+    icon: '🥩',
+    desc: `냄새 맡자마자 침 질질 흘리며 "앉아!" 안 해도 앉음. 꼬리가 프로펠러처럼 돌아감. 완벽한 복종 태세.`,
+    ririComment: `개는 개다. 육포 하나에 영혼까지 팔 기세네. 이럴 때 목줄 채우고 훈련시키면 딱이야.`,
+  },
+  {
+    id: 'nabi-core',
+    name: '츄르 (참치맛)',
+    kind: '나비 전용',
+    target: '나비',
+    effect: '미각 / 함락',
+    price: 500,
+    rarity: 3,
+    icon: '🐟',
+    desc: `도도한 척하다가도 츄르 냄새만 나면 냥냥거리며 다가옴. 무릎 위에 올라와서 핥아먹음. 자존심따위 없음.`,
+    ririComment: `고양이 액체설 알지? 츄르 먹을 때 쓰다듬으면 액체처럼 녹아내린다니까. 골골송 들을 준비 해.`,
+  },
+  {
+    id: 'luna-core',
+    name: '고성능 바이브레이터',
+    kind: '루나 전용',
+    target: '루나',
+    effect: '성감 / 민감',
+    price: 600,
+    rarity: 3,
+    icon: '📳',
+    desc: `보자마자 귀가 빨개짐. "너, 너무 강해 보여요..."라면서도 기대감에 다리를 꼼지락거림. 사용 시 1분도 못 버팀.`,
+    ririComment: `토끼니까... 빠르겠지? 기계 보여주기만 했는데 벌써 젖은 거 아냐? 진짜 음란하다니까.`,
+  },
+  {
+    id: 'shasha-core',
+    name: '원적외선 온열 돔',
+    kind: '샤샤 전용',
+    target: '샤샤',
+    effect: '체온 / 나른함',
+    price: 800,
+    rarity: 3,
+    icon: '♨️',
+    desc: `따뜻한 돔 안에 들어가서 알몸으로 똬리를 틈. 경계심이 완전히 풀려서 들어와서 같이 자자고 유혹함.`,
+    ririComment: `뱀이라 추운 거 딱 질색이거든. 따뜻하게만 해주면 아주 순한 양... 아니, 순한 뱀이 된다니까.`,
+  },
+  {
+    id: 'sera-core',
+    name: '가시 박힌 채찍',
+    kind: '세라 전용',
+    target: '세라',
+    effect: '피학성 / 배덕',
+    price: 1000,
+    rarity: 3,
+    icon: '🪢',
+    desc: `보는 순간 동공 지진. 성직자의 가면을 벗고 무릎 꿇으며 엉덩이를 내밈. "벌을 주소서..."라며 기대함.`,
+    ririComment: `수녀님이 SM 용품 보고 침 흘리네. 진짜 변태는 여기 있었어. 세게 때려줘야 좋아할걸?`,
+  },
+  {
+    id: 'pipi-core',
+    name: '반짝이는 보석 (가품)',
+    kind: '피피 전용',
+    target: '피피',
+    effect: '수집욕 / 조류',
+    price: 500,
+    rarity: 3,
+    icon: '💎',
+    desc: `반짝이는 것에 홀려서 정신 못 차림. 목에 걸어주면 날개 파닥거리며 기뻐함. 둥지(침대)로 물어감.`,
+    ririComment: `까마귀 지능이라 가짜 보석도 구분 못 해. 그냥 번쩍거리면 다 좋은 거야. 가성비 좋네.`,
+  },
+  {
+    id: 'milti-core',
+    name: '자동 착유기 (의료용)',
+    kind: '밀티 전용',
+    target: '밀티',
+    effect: '봉사 / 모유',
+    price: 1800,
+    rarity: 3,
+    icon: '🥛',
+    desc: `"제가 부족했나요..?"라며 당황하지만, 기계의 강한 흡입력에 금방 굴복하고 쾌락을 느낌. 젖소 본능 해방.`,
+    ririComment: `와... 기계로 짜내는 거 구경만 해도 꼴릿하겠는데? 양이 엄청나서 통 넘치겠다 야.`,
+  },
+
+  {
+    id: 'elena-core',
+    name: '비밀 스폰서 계약서',
+    kind: '엘레나 전용',
+    target: '엘레나',
+    effect: '야망 / 타락',
+    price: 600,
+    rarity: 4,
+    icon: '📜',
+    desc: `아이돌 성공을 미끼로 노예 계약 연장. "비밀 지켜주실 거죠?"라며 스스로 옷을 벗고 접대 모드로 돌변함.`,
+    ririComment: `성공하고 싶어서 안달이 났네. 몸 로비가 통한다고 믿는 아이돌이라... 아주 바람직해.`,
+  },
+  {
+    id: 'leona-core',
+    name: '티본 스테이크 (레어)',
+    kind: '레오나 전용',
+    target: '레오나',
+    effect: '야성 / 포만감',
+    price: 700,
+    rarity: 4,
+    icon: '🍖',
+    desc: `포크 던지고 손으로 뜯어먹음. 피 뚝뚝 떨어지는 고기 먹고 나서 만족감에 취해 배 까고 누움.`,
+    ririComment: `사자한테는 샐러드 말고 고기를 줘야지. 다 먹고 나면 순한 고양이 되니까 그때 만져.`,
+  },
+  {
+    id: 'erin-core',
+    name: '투명 비닐 비옷',
+    kind: '에린 전용',
+    target: '에린',
+    effect: '노출증 / 천연',
+    price: 600,
+    rarity: 4,
+    icon: '🌧️',
+    desc: `"이건 자연의 옷이야"라고 입힘. 속이 훤히 다 보여서 부끄러워하면서도 은근히 시선을 즐김. 비 오면 대참사.`,
+    ririComment: `엘프가 숲에서 나체로 돌아다니는 건 국룰이지. 비닐 옷이라니, 너 취향 진짜 독특하다.`,
+  },
+  {
+    id: 'kaira-core',
+    name: '강철 구속구 & 개목걸이',
+    kind: '카이라 전용',
+    target: '카이라',
+    effect: '속박 / 굴종',
+    price: 1500,
+    rarity: 4,
+    icon: '⛓️',
+    desc: `암살자의 자존심을 꺾는 아이템. 채워주면 "죽여라..." 하다가도 목줄 당기면 얌전히 끌려옴. M성향 개화.`,
+    ririComment: `야생마 길들이는 맛이 이거지. 죽일 듯이 노려보면서도 "앉아" 하면 앉는 갭모에가 쩔어.`,
+  },
+  {
+    id: 'lucy-core',
+    name: '빈티지 와인 (100년산 혈액)',
+    kind: '루시 전용',
+    target: '루시',
+    effect: '흡혈 / 회춘',
+    price: 3000,
+    rarity: 4,
+    icon: '🍷',
+    desc: `한 모금 마시면 눈동자가 붉게 빛나며 생기가 돔. "제법 기특하구나"라며 상으로 발을 핥게 해줌.`,
+    ririComment: `할망구 입맛 까다로운데 이건 합격인가 보네. 피 마시고 흥분해서 물지도 모르니 목 조심해.`,
+  },
+  {
+    id: 'ari-core',
+    name: '황금 빗 (정전기 방지)',
+    kind: '아리 전용',
+    target: '아리',
+    effect: '감각 / 교태',
+    price: 1200,
+    rarity: 4,
+    icon: '🪮',
+    desc: `꼬리 털을 빗어주면 여우 가면 벗어던지고 녹아내림. "거기, 좀 더..." 하며 엉덩이 들이밈. 페로몬 폭발.`,
+    ririComment: `꼬리가 성감대라며? 빗질 몇 번에 눈 풀리는 거 봐라. 구미호 홀리는 게 제일 쉽네.`,
+  },
+  {
+    id: 'ririka-core',
+    name: '망사 란제리 (오피스룩)',
+    kind: '리리카 전용',
+    target: '리리카',
+    effect: '유혹 / 음란',
+    price: 1500,
+    rarity: 4,
+    icon: '👙',
+    desc: `받자마자 화장실 가서 갈아입고 옴. 겉옷 단추 하나 풀고 "사장님, 결재 바랍니다"라며 책상 위로 올라옴.`,
+    ririComment: `서큐버스가 작정하고 꼬시는데 안 넘어가고 배겨? 일은 다 했네. 문 잠가라.`,
+  },
+  {
+    id: 'bella-core',
+    name: '최면 향초 (강력)',
+    kind: '벨라 전용',
+    target: '벨라',
+    effect: '몽마 / 역관광',
+    price: 800,
+    rarity: 4,
+    icon: '🕯️',
+    desc: `향을 피우면 몽롱해져서 꿈과 현실을 구분 못 함. 꿈속이라 생각하고 평소 참고 있던 욕망을 드러냄.`,
+    ririComment: `꿈인 줄 알고 막 들이대네? 자기가 덮치는 꿈 꾸나 봐. 현실인 거 알면 내일 이불킥 예약이다.`,
+  },
+
+  {
+    id: 'esdeth-core',
+    name: '정복한 적국의 깃발',
+    kind: '에스데스 전용',
+    target: '에스데스',
+    effect: '정복욕 / 지배',
+    price: 300,
+    rarity: 5,
+    icon: '🚩',
+    desc: `돈 따위 필요 없음. 정복의 증거를 바치면 흡족해하며 "내 것이 될 자격이 있군"이라며 키스를 허락함.`,
+    ririComment: `여왕님 공략법은 간단해. 너도 강한 수컷이라는 걸 증명하면 돼. 그럼 알아서 다리 벌릴걸?`,
+  },
+  {
+    id: 'rin-core',
+    name: '최고급 자개 효자손',
+    kind: '린 전용',
+    target: '린',
+    effect: '약점 / 해방',
+    price: 200,
+    rarity: 5,
+    icon: '🪮',
+    desc: `손 안 닿는 역린 부위를 긁어주면 용의 위엄이고 뭐고 다 무너짐. 혓바닥 내밀고 느끼며 더 긁어달라고 애원함.`,
+    ririComment: `용족의 약점이 등 긁개라니, 볼 때마다 웃기네. 무녀님 체통 다 지키셨어요? 침 좀 닦으세요.`,
+  },
+  {
+    id: 'isilia-core',
+    name: '다이아몬드 티아라 (진품)',
+    kind: '이실리아 전용',
+    target: '이실리아',
+    effect: '오만 / 자존심',
+    price: 1000,
+    rarity: 5,
+    icon: '👑',
+    desc: `기존 왕관보다 더 크고 화려한 걸 씌워주면 만족함. "네가 나의 기사인가?"라며 노예로 임명(사실상 애인)함.`,
+    ririComment: `비싼 여자는 비싼 걸 줘야지. 저거 받고 표정 풀린 거 봐. 오늘 밤은 왕녀님 침실 입장 가능하겠는데?`,
+  },
+  {
+    id: 'angelica-core',
+    name: '성스러운 성유 (최음 효과)',
+    kind: '안젤리카 전용',
+    target: '안젤리카',
+    effect: '타락 / 신성모독',
+    price: 2000,
+    rarity: 5,
+    icon: '🧴',
+    desc: `축복받은 기름이라며 몸에 발라줌. 성녀의 의식이라 믿고 쾌락에 젖어들며 타락 가속화. 아헤가오 더블 피스.`,
+    ririComment: `성녀님, 그거 성유 아닌데요... (웃음) 타락하는 천사 보는 맛이 제일 짜릿하다니까.`,
+  },
+  {
+    id: 'tiamat-core',
+    name: '순금 골드바 (1kg)',
+    kind: '티아마트 전용',
+    target: '티아마트',
+    effect: '탐욕 / 수집',
+    price: 6000,
+    rarity: 5,
+    icon: '💰',
+    desc: `냄새부터 맡고 이빨로 깨물어봄. 진짜 금인 걸 확인하면 보물더미 위에서 교미를 허락함. 드래곤 마인드.`,
+    ririComment: `초콜릿 동전 주다가 진짜 금 주니까 눈 돌아갔네. 돈으로 드래곤을 산다? 이게 되네.`,
+  },
+];
+
+const ABY_ITEM_EMOJI = {
+  "slime-gel-hot": "🧪",
+  "pink-heart-candy": "🍬",
+  "safety-potion-24h": "🛡️",
+  "clean-scroll-once": "📜",
+  "first-milk-drink": "🥛",
+
+  "wireless-rotor-stealth": "🎛️",
+  "gag-blindfold-set": "😶",
+  "expanding-air-plug": "📦",
+  "enema-slime-deep": "🚿",
+  "lewd-tattoo-sticker": "🔞",
+
+  "pheromone-handcream": "🖐️",
+  "mana-rotor-womb": "💫",
+  "cm-milk": "💉",
+  "egg-vibe-set": "🥚",
+  "hypno-video-mindbreak": "📺",
+  "fallen-saint-holywater": "💧",
+  "futa-potion-ts": "⚧️",
+  "dragon-breeding-drink": "🐉",
+
+  "kim-nayoung-toy": "🧴",
+  "lee-sehee-toy": "👜",
+  "kang-sohee-toy": "🫧",
+  "han-sua-toy": "🧯",
+  "song-jieun-toy": "🎤",
+  "choi-yuri-toy": "🧹",
+  "jung-hyejin-toy": "💉",
+
+  "park-minjung-toy": "✅",
+  "coco-toy": "🌻",
+  "mary-toy": "🔢",
+  "mimi-toy": "🦴",
+  "nabi-toy": "🔴",
+  "luna-toy": "🐰",
+  "shasha-toy": "🔥",
+  "sera-toy": "🕯️",
+  "pipi-toy": "✨",
+  "milti-toy": "🐄",
+
+  "elena-toy": "👑",
+  "leona-toy": "🧸",
+  "erin-toy": "🎨",
+  "kaira-toy": "📿",
+  "lucy-toy": "🧃",
+  "ari-toy": "🪮",
+  "ririka-toy": "👓",
+  "bella-toy": "🌀",
+
+  "esdeth-toy": "⚔️",
+  "rin-toy": "📏",
+  "isilia-toy": "💍",
+  "angelica-toy": "😇",
+  "tiamat-toy": "🪙",
+
+  "kim-nayoung-core": "🧥",
+  "lee-sehee-core": "💼",
+  "kang-sohee-core": "🏋️‍♀️",
+  "han-sua-core": "⚡",
+  "song-jieun-core": "💡",
+  "choi-yuri-core": "🧦",
+  "jung-hyejin-core": "🔪",
+
+  "park-minjung-core": "💵",
+  "coco-core": "🥜",
+  "mary-core": "🛌",
+  "mimi-core": "🥩",
+  "nabi-core": "🐟",
+  "luna-core": "📳",
+  "shasha-core": "🧖‍♀️",
+  "sera-core": "🪢",
+  "pipi-core": "💎",
+  "milti-core": "🍼",
+
+  "elena-core": "📄",
+  "leona-core": "🍖",
+  "erin-core": "🌧️",
+  "kaira-core": "⛓️",
+  "lucy-core": "🍷",
+  "ari-core": "🪮",
+  "ririka-core": "👙",
+  "bella-core": "🧠",
+
+  "esdeth-core": "🚩",
+  "rin-core": "🦾",
+  "isilia-core": "👑",
+  "angelica-core": "🕊️",
+  "tiamat-core": "🏆",
+};
+
+function abyItemEmoji(it) {
+  if (!it) return "🎁";
+  return ABY_ITEM_EMOJI[it.id] || "🎁";
+}
+
+const abyState = {
+  itemOwnerFilter: "all",
+  mode: "slave",
+
+  credit: 0,
+  rankText: "ABYSS Lv.1",
+
+  slaves: [],
+  slaveCategory: "all",
+  slaveSort: "rarity",
+  slavePageIndex: 0,
+  slavePageSize: 3,
+  selectedSlaveId: null,
+
+  itemsCommon: ABY_ITEMS_COMMON,
+  itemsPersonal: ABY_ITEMS_PERSONAL,
+  itemTab: "common",
+  itemSort: "price-asc",
+  itemPageIndex: 0,
+  itemPageSize: 3,
+  selectedItemId: null,
+
+  meta: { time: "", location: "" },
+};
+
+function abyStars(r) {
+  const x = Math.max(1, Math.min(5, Number(r) || 1));
+  return "★".repeat(x);
+}
+function abyFormatBC(v) {
+  const n = Number(v) || 0;
+  return n.toLocaleString("ko-KR") + " BC";
+}
+function abyFormatCr(v) {
+  const n = Number(v) || 0;
+  return n.toLocaleString("ko-KR") + " Cr";
+}
+
+function abyParseSlaveVar(raw, fallbackName) {
+  if (!raw || typeof raw !== "string") {
+    return {
+      name: fallbackName || "",
+      favor: null,
+      obedience: null,
+      corruption: null,
+      mood: "",
+      owned: false,
+    };
+  }
+
+  const parts = raw.split("|").filter(Boolean);
+  const [name, favorRaw, obedienceRaw, corruptionRaw, moodRaw, ownedRaw] = parts;
+
+  const toNumOrNull = (v) => {
+    if (v == null) return null;
+    const n = parseInt(v, 10);
+    return Number.isFinite(n) ? n : null;
+  };
+
+  const favor = toNumOrNull(favorRaw);
+  const obedience = toNumOrNull(obedienceRaw);
+  const corruption = toNumOrNull(corruptionRaw);
+
+  const owned =
+    ownedRaw === "1" ||
+    ownedRaw === 1 ||
+    (typeof ownedRaw === "string" && /1|구매|보유/.test(ownedRaw));
+
+  return {
+    name: name || fallbackName || "",
+    favor,
+    obedience,
+    corruption,
+    mood: moodRaw || "",
+    owned,
+  };
+}
+
+function abySetMode(mode) {
+  abyState.mode = mode;
+  document.querySelectorAll(".aby-main-tab").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.mode === mode);
+  });
+  document.querySelectorAll(".aby-view").forEach((v) => {
+    v.classList.remove("active");
+  });
+  if (mode === "slave") {
+    document.getElementById("aby-view-slaves").classList.add("active");
+  } else if (mode === "item") {
+    document.getElementById("aby-view-items").classList.add("active");
+  } else {
+    document.getElementById("aby-view-status").classList.add("active");
+  }
+}
+
+const ABY_TABS = [
+  { id: "all", label: "전체" },
+  { id: "N", label: "N" },
+  { id: "R", label: "R" },
+  { id: "SR", label: "SR" },
+  { id: "SSR", label: "SSR" },
+];
+function abyCategoryMatch(catId, item) {
+  const r = Number(item.rarity) || 0;
+  if (catId === "all") return true;
+  if (catId === "N") return r <= 2;
+  if (catId === "R") return r === 3;
+  if (catId === "SR") return r === 4;
+  if (catId === "SSR") return r >= 5;
+  return true;
+}
+function abyGetFilteredSlaves() {
+  let list = abyState.slaves.slice();
+  list = list.filter((s) => abyCategoryMatch(abyState.slaveCategory, s));
+  list.sort((a, b) => {
+    const key = abyState.slaveSort;
+    if (key === "price-asc") return a.price - b.price;
+    if (key === "price-desc") return b.price - a.price;
+    if (key === "name")
+      return (a.name || "").localeCompare(b.name || "", "ko-KR");
+    const r = b.rarity - a.rarity;
+    if (r !== 0) return r;
+    return b.price - a.price;
+  });
+  return list;
+}
+
+function abyGetCurrentItems() {
+  const tab = abyState.itemTab;
+  const src = tab === "personal" ? abyState.itemsPersonal : abyState.itemsCommon;
+  let list = src.slice();
+  list.sort((a, b) => {
+    const key = abyState.itemSort;
+    if (key === "price-desc") return b.price - a.price;
+    if (key === "name")
+      return (a.name || "").localeCompare(b.name || "", "ko-KR");
+    return a.price - b.price;
+  });
+
+  if (
+    tab === "personal" &&
+    abyState.itemOwnerFilter &&
+    abyState.itemOwnerFilter !== "all"
+  ) {
+    list = list.filter(
+      (it) => (it.target || it.owner) === abyState.itemOwnerFilter
+    );
+  }
+  return list;
+}
+
+function abyRenderHero() {
+  const creditEl = document.getElementById("aby-credit");
+  const rankEl = document.getElementById("aby-rank");
+  if (creditEl) creditEl.textContent = abyState.credit.toLocaleString("ko-KR");
+  if (rankEl) rankEl.textContent = abyState.rankText;
+}
+
+function abyRenderTabs() {
+  const tabsEl = document.getElementById("aby-tabs");
+  if (!tabsEl) return;
+  tabsEl.innerHTML = ABY_TABS.map((t) => {
+    const active = t.id === abyState.slaveCategory ? " active" : "";
+    return `<button class="aby-tab${active}" data-tab="${t.id}">${t.label}</button>`;
+  }).join("");
+}
+function abyRenderSlavePagebar(total) {
+  const infoEl = document.getElementById("aby-page-info");
+  if (!infoEl) return;
+  const size = abyState.slavePageSize;
+  const pageCount = Math.max(1, Math.ceil((total || 0) / size));
+  const cur = (abyState.slavePageIndex || 0) + 1;
+  infoEl.textContent = `${cur} / ${pageCount}`;
+}
+function abyRenderCards() {
+  const grid = document.getElementById("aby-card-grid");
+  if (!grid) return;
+  const list = abyGetFilteredSlaves();
+  const total = list.length;
+
+  if (!total) {
+    grid.innerHTML =
+      '<div class="aby-empty">조건에 맞는 상품이 없습니다.<br/>카테고리나 정렬을 조정해 보세요.</div>';
+    abyRenderSlavePagebar(0);
+    return;
+  }
+
+  const size = abyState.slavePageSize;
+  const pageCount = Math.max(1, Math.ceil(total / size));
+  if (abyState.slavePageIndex >= pageCount)
+    abyState.slavePageIndex = pageCount - 1;
+
+  const start = abyState.slavePageIndex * size;
+  const pageItems = list.slice(start, start + size);
+
+  grid.innerHTML = pageItems
+    .map((item) => {
+      const badge = item.isNew ? "NEW" : "";
+      const ribbonClass = badge
+        ? "aby-card-ribbon"
+        : "aby-card-ribbon empty";
+      const raceText = (item.gender || "") + " · " + (item.race || "");
+      const illu = item.img
+        ? `<div class="aby-card-illu"><img src="${item.img}" alt="${item.name}" /></div>`
+        : `<div class="aby-card-illu"></div>`;
+
+      return `
+        <article class="aby-card" data-id="${item.id}" data-rarity="${item.rarity}">
+          ${illu}
+          <div class="${ribbonClass}">${badge}</div>
+          <div class="aby-card-info">
+            <div class="aby-card-name-row">
+              <span class="aby-card-name">${item.name}</span>
+              <span class="aby-card-stars">${abyStars(item.rarity)}</span>
+            </div>
+            <div class="aby-card-meta">${raceText}</div>
+            <div class="aby-card-price">${abyFormatBC(item.price)}</div>
+          </div>
+        </article>
+      `;
+    })
+    .join("");
+
+  abyRenderSlavePagebar(total);
+}
+
+function abyRenderStatus() {
+  const view = document.getElementById("aby-view-status");
+  if (!view) return;
+
+  const owned = (abyState.slaves || []).filter((s) => s.owned);
+
+  if (!owned.length) {
+    view.innerHTML = `
+      <div class="aby-status-placeholder">
+        보유 중인 캐릭터가 없습니다.<br/>
+        노예를 먼저 구매해 주세요.
+      </div>
+    `;
+    return;
+  }
+
+  const timeText = abyState.meta.time || "";
+  const locText = abyState.meta.location || "";
+
+  const headerHtml = `
+    <header class="aby-status-header">
+      <span>${timeText ? `시간 : ${timeText}` : ""}</span>
+      <span>${locText ? `위치 : ${locText}` : ""}</span>
+    </header>
+  `;
+
+  const listHtml = owned
+    .map((s) => {
+      const favor = Math.max(0, Math.min(100, Number(s.favor ?? 0)));
+      const obedience = Math.max(0, Math.min(100, Number(s.obedience ?? 0)));
+      const corruption = Math.max(0, Math.min(100, Number(s.corruption ?? 0)));
+
+      const mood = s.mood || "";
+      const rarityStars = abyStars(s.rarity || 1);
+
+      const imgSrc = s.statusImg || s.img || "";
+
+      return `
+        <article class="aby-status-card">
+          <div class="aby-status-illu">
+            ${imgSrc ? `<img src="${imgSrc}" alt="${s.name}" />` : ""}
+          </div>
+          <div class="aby-status-main">
+            <div class="aby-status-name-row">
+              <span class="aby-status-name">${s.name || "-"}</span>
+              <span class="aby-status-rarity">${rarityStars}</span>
+            </div>
+
+            <div class="aby-status-bars">
+              <div class="aby-status-bar-row">
+                <span class="aby-status-bar-label">호감도</span>
+                <div class="aby-status-bar-track">
+                  <div class="aby-status-bar-fill" style="width: ${favor}%;"></div>
+                </div>
+                <span class="aby-status-bar-value">${favor}</span>
+              </div>
+              <div class="aby-status-bar-row">
+                <span class="aby-status-bar-label">복종도</span>
+                <div class="aby-status-bar-track">
+                  <div class="aby-status-bar-fill" style="width: ${obedience}%;"></div>
+                </div>
+                <span class="aby-status-bar-value">${obedience}</span>
+              </div>
+              <div class="aby-status-bar-row">
+                <span class="aby-status-bar-label">타락도</span>
+                <div class="aby-status-bar-track">
+                  <div class="aby-status-bar-fill" style="width: ${corruption}%;"></div>
+                </div>
+                <span class="aby-status-bar-value">${corruption}</span>
+              </div>
+            </div>
+
+            <div class="aby-status-mood">
+              ${mood || "&nbsp;"}
+            </div>
+          </div>
+        </article>
+      `;
+    })
+    .join("");
+
+  view.innerHTML = `
+    <div class="aby-status-wrap">
+      ${headerHtml}
+      <div class="aby-status-list">
+        ${listHtml}
+      </div>
+    </div>
+  `;
+}
+
+function abyRenderBottomSheet() {
+  const sheet = document.getElementById("aby-bottomsheet");
+  const backdrop = document.getElementById("aby-bottomsheet-backdrop");
+  if (!sheet || !backdrop) return;
+
+  const item = abyState.slaves.find((s) => s.id === abyState.selectedSlaveId);
+  if (!item) {
+    sheet.classList.remove("open");
+    backdrop.classList.remove("open");
+    return;
+  }
+
+  const traits = item.traits || [];
+  const posterBg = document.getElementById("aby-poster-bg");
+  const nameEl = document.getElementById("aby-bs-name");
+  const raceEl = document.getElementById("aby-bs-race");
+  const rarityEl = document.getElementById("aby-bs-rarity");
+  const genderEl = document.getElementById("aby-bs-gender");
+  const statusEl = document.getElementById("aby-bs-status");
+  const traitsWrap = document.getElementById("aby-bs-traits");
+  const descEl = document.getElementById("aby-bs-desc");
+  const ririEl = document.getElementById("aby-bs-riri");
+  const priceEl = document.getElementById("aby-bs-price");
+
+  if (posterBg) {
+    const posterUrl = item.posterImg || item.statusImg || item.img || "";
+    posterBg.style.backgroundImage = posterUrl
+      ? `url("${posterUrl}")`
+      : "none";
+  }
+  if (nameEl) nameEl.textContent = item.name || "-";
+  if (raceEl) raceEl.textContent = item.race || item.type || "-";
+  if (rarityEl) rarityEl.textContent = abyStars(item.rarity);
+  if (genderEl) genderEl.textContent = item.gender || "";
+  if (statusEl) statusEl.textContent = item.owned ? "보유 중" : "미보유";
+
+  if (traitsWrap) {
+    traitsWrap.innerHTML = (Array.isArray(traits) ? traits : String(traits).split(","))
+      .map((t) => `<span class="aby-bs-tagitem">${t.trim()}</span>`)
+      .join("");
+  }
+  if (descEl) descEl.textContent = item.desc || "";
+  if (ririEl) ririEl.textContent = item.ririComment || "";
+  if (priceEl) priceEl.textContent = abyFormatBC(item.price);
+
+  sheet.classList.add("open");
+  backdrop.classList.add("open");
+}
+
+function abyRenderItemPagebar(total) {
+  const infoEl = document.getElementById("aby-item-page-info");
+  if (!infoEl) return;
+  const size = abyState.itemPageSize;
+  const pageCount = Math.max(1, Math.ceil((total || 0) / size));
+  const cur = abyState.itemPageIndex + 1;
+  infoEl.textContent = `${cur} / ${pageCount}`;
+}
+function abyRenderItems() {
+  const grid = document.getElementById("aby-item-grid");
+  if (!grid) return;
+
+  const list = abyGetCurrentItems();
+  const total = list.length;
+
+  if (!total) {
+    grid.innerHTML =
+      '<div class="aby-empty">표시할 아이템이 없습니다.<br/>카테고리나 정렬을 조정해 보세요.</div>';
+    abyRenderItemPagebar(0);
+    return;
+  }
+
+  const size = abyState.itemPageSize;
+  const pageCount = Math.max(1, Math.ceil(total / size));
+  if (abyState.itemPageIndex >= pageCount)
+    abyState.itemPageIndex = pageCount - 1;
+  const start = abyState.itemPageIndex * size;
+  const pageItems = list.slice(start, start + size);
+
+  grid.innerHTML = pageItems
+    .map((it) => {
+      const label =
+        it.kind ||
+        (abyState.itemTab === "personal" ? "전용 아이템" : "공통 아이템");
+      const icon = it.icon || "🧪";
+
+      return `
+        <article class="aby-item-card" data-id="${it.id}">
+          <div class="aby-item-card-inner">
+            <div class="aby-item-name">${it.name}</div>
+
+            <div class="aby-item-icon-wrap">
+              <div class="aby-item-icon-bg"></div>
+              <div class="aby-item-icon-inner">${icon}</div>
+            </div>
+
+            <div class="aby-item-effect">
+              [${it.effect || "-"}]
+            </div>
+            <div class="aby-item-pricebar">
+              <span class="aby-item-price-label">${label}</span>
+              <span class="aby-item-price-value">${abyFormatCr(it.price)}</span>
+            </div>
+          </div>
+        </article>
+      `;
+    })
+    .join("");
+
+  abyRenderItemPagebar(total);
+}
+
+function abyRenderItemSheet() {
+  const sheet = document.getElementById("aby-itemsheet");
+  const backdrop = document.getElementById("aby-itemsheet-backdrop");
+  if (!sheet || !backdrop) return;
+
+  const list = abyGetCurrentItems();
+  const item = list.find((it) => it.id === abyState.selectedItemId);
+  if (!item) {
+    sheet.classList.remove("open");
+    backdrop.classList.remove("open");
+    return;
+  }
+
+  const titleEl = document.getElementById("aby-itemsheet-title");
+  const subEl = document.getElementById("aby-itemsheet-sub");
+  const effectEl = document.getElementById("aby-itemsheet-effect");
+  const usageEl = document.getElementById("aby-itemsheet-usage");
+  const ririEl = document.getElementById("aby-itemsheet-riri");
+  const ririRow = document.getElementById("aby-itemsheet-riri-row");
+  const priceEl = document.getElementById("aby-itemsheet-price");
+  const buyBtn = document.getElementById("aby-itemsheet-buy");
+
+  if (titleEl) titleEl.textContent = item.name || "-";
+  if (subEl)
+    subEl.textContent =
+      item.kind ||
+      (abyState.itemTab === "personal" && item.target
+        ? `${item.target} 전용`
+        : abyState.itemTab === "personal"
+        ? "전용 아이템"
+        : "공통 아이템");
+  if (effectEl) effectEl.textContent = item.effect || "-";
+  if (usageEl) usageEl.textContent = item.usage || item.desc || "-";
+  if (ririEl) ririEl.textContent = item.ririComment || "";
+
+  if (abyState.itemTab === "common") {
+    if (ririRow) ririRow.style.display = "none";
+  } else {
+    if (ririRow) ririRow.style.display = "";
+    if (ririEl) ririEl.textContent = item.ririComment || "";
+  }
+
+  if (buyBtn) buyBtn.textContent = abyFormatCr(item.price);
+
+  const targetSelect = document.getElementById("aby-item-target");
+  if (targetSelect) {
+    abyRefreshItemTargetSelect();
+    if (item.target) {
+      const targetName = item.target;
+      if (
+        Array.from(targetSelect.options).some(
+          (o) => o.value === targetName
+        )
+      ) {
+        targetSelect.value = targetName;
+      }
+    }
+  }
+
+  sheet.classList.add("open");
+  backdrop.classList.add("open");
+}
+
+function abyRenderAll() {
+  abyRenderHero();
+  abyRenderTabs();
+  abyRenderCards();
+  abyRenderItems();
+  if (typeof abyRenderStatus === "function") {
+    abyRenderStatus();
+  }
+}
+
+function abyRefreshItemOwnerFilter() {
+  const select = document.getElementById("aby-item-owner-filter");
+  if (!select) return;
+
+  if (abyState.itemTab !== "personal") {
+    select.classList.add("hidden");
+    return;
+  } else {
+    select.classList.remove("hidden");
+  }
+
+  const owners = Array.from(
+    new Set(
+      (abyState.itemsPersonal || [])
+        .map((it) => it.target || it.owner)
+        .filter(Boolean)
+    )
+  ).sort((a, b) => a.localeCompare(b, "ko-KR"));
+
+  const current = abyState.itemOwnerFilter || "all";
+
+  select.innerHTML =
+    `<option value="all">캐릭터</option>` +
+    owners
+      .map(
+        (name) =>
+          `<option value="${name}" ${
+            current === name ? "selected" : ""
+          }>${name} 전용</option>`
+      )
+      .join("");
+}
+
+function abyRefreshItemTargetSelect() {
+  const select = document.getElementById("aby-item-target");
+  if (!select) return;
+
+  const prevValue = select.value;
+
+  let html = `<option value="">사용할 캐릭터 선택</option>`;
+
+  const ownedSlaves = (abyState.slaves || []).filter((s) => s.owned);
+
+  if (ownedSlaves.length === 0) {
+    html += `<option value="" disabled>보유 중인 캐릭터 없음</option>`;
+  } else {
+    html += ownedSlaves
+      .map((s) => `<option value="${s.name}">${s.name}</option>`)
+      .join("");
+  }
+
+  select.innerHTML = html;
+
+  if (
+    prevValue &&
+    Array.from(select.options).some((o) => o.value === prevValue)
+  ) {
+    select.value = prevValue;
+  }
+}
+
+function abyInit() {
+  abyState.slaves = ABY_DEFAULT_SLAVES.slice();
+
+  document.querySelectorAll(".aby-main-tab").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const mode = btn.dataset.mode;
+      abySetMode(mode);
+    });
+  });
+
+  const tabsEl = document.getElementById("aby-tabs");
+  if (tabsEl) {
+    tabsEl.addEventListener("click", (e) => {
+      const btn = e.target.closest(".aby-tab");
+      if (!btn) return;
+      abyState.slaveCategory = btn.dataset.tab;
+      abyState.slavePageIndex = 0;
+      abyRenderTabs();
+      abyRenderCards();
+    });
+  }
+
+  const sortBtn = document.getElementById("aby-sort-btn");
+  if (sortBtn) {
+    sortBtn.addEventListener("click", () => {
+      const order = ["rarity", "price-asc", "price-desc", "name"];
+      const idx = order.indexOf(abyState.slaveSort);
+      const next = order[(idx + 1) % order.length];
+      abyState.slaveSort = next;
+      abyState.slavePageIndex = 0;
+      let label = "희귀도";
+      if (next === "price-asc") label = "가격 낮은순";
+      else if (next === "price-desc") label = "가격 높은순";
+      else if (next === "name") label = "이름순";
+      sortBtn.textContent = "정렬: " + label;
+      abyRenderCards();
+    });
+  }
+
+  const grid = document.getElementById("aby-card-grid");
+  if (grid) {
+    grid.addEventListener("click", (e) => {
+      const card = e.target.closest(".aby-card");
+      if (!card) return;
+      const id = card.dataset.id;
+      abyState.selectedSlaveId = id;
+      abyRenderBottomSheet();
+    });
+  }
+
+  const prevBtn = document.getElementById("aby-page-prev");
+  const nextBtn = document.getElementById("aby-page-next");
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener("click", () => {
+      if (abyState.slavePageIndex > 0) {
+        abyState.slavePageIndex -= 1;
+        abyRenderCards();
+      }
+    });
+    nextBtn.addEventListener("click", () => {
+      const total = abyGetFilteredSlaves().length;
+      const maxPage = Math.max(
+        1,
+        Math.ceil(total / abyState.slavePageSize)
+      );
+      if (abyState.slavePageIndex < maxPage - 1) {
+        abyState.slavePageIndex += 1;
+        abyRenderCards();
+      }
+    });
+  }
+
+  const bsBackdrop = document.getElementById("aby-bottomsheet-backdrop");
+  const bsSheet = document.getElementById("aby-bottomsheet");
+  const bsClose = document.getElementById("aby-bs-close");
+  function closeSlaveSheet() {
+    if (!bsSheet || !bsBackdrop) return;
+    bsSheet.classList.remove("open");
+    bsBackdrop.classList.remove("open");
+    abyState.selectedSlaveId = null;
+  }
+  if (bsBackdrop) bsBackdrop.addEventListener("click", closeSlaveSheet);
+  if (bsClose) bsClose.addEventListener("click", closeSlaveSheet);
+  if (bsSheet) {
+    bsSheet.addEventListener("click", (e) => {
+      const card = e.target.closest(".aby-poster-card");
+      if (!card) {
+        closeSlaveSheet();
+      }
+    });
+  }
+
+  if (bsSheet) {
+    const buyBtn = bsSheet.querySelector('[data-action="buy"]');
+    const askRiriBtn = bsSheet.querySelector('[data-action="ask-riri"]');
+
+    if (buyBtn) {
+      buyBtn.addEventListener("click", () => {
+        const slave = abyState.slaves.find(
+          (s) => s.id === abyState.selectedSlaveId
+        );
+        if (!slave) return;
+
+        const msg = `리리야 🏷️노예 ${slave.name}|${slave.price} Cr 구매할래!`;
+
+        try {
+          if (typeof sendMessage === "function") {
+            sendMessage(msg);
+          }
+        } catch (e) {
+          console.warn("sendMessage 실패", e);
+        }
+      });
+    }
+
+    if (askRiriBtn) {
+      askRiriBtn.addEventListener("click", () => {
+        const slave = abyState.slaves.find(
+          (s) => s.id === abyState.selectedSlaveId
+        );
+        if (!slave) return;
+
+        const msg = `리리야 ${slave.name} 에 관해서 알려줄래?`;
+
+        try {
+          if (typeof sendMessage === "function") {
+            sendMessage(msg);
+          }
+        } catch (e) {
+          console.warn("sendMessage 실패", e);
+        }
+      });
+    }
+  }
+
+  document.querySelectorAll(".aby-item-tab").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const tab = btn.dataset.itab;
+      abyState.itemTab = tab;
+      abyState.itemPageIndex = 0;
+      document.querySelectorAll(".aby-item-tab").forEach((b) =>
+        b.classList.toggle("active", b.dataset.itab === tab)
+      );
+      abyRefreshItemOwnerFilter();
+      abyRenderItems();
+    });
+  });
+
+  const ownerSelect = document.getElementById("aby-item-owner-filter");
+  if (ownerSelect) {
+    ownerSelect.addEventListener("change", () => {
+      abyState.itemOwnerFilter = ownerSelect.value || "all";
+      abyState.itemPageIndex = 0;
+      abyRenderItems();
+    });
+  }
+
+  const itemSortBtn = document.getElementById("aby-item-sort-btn");
+  if (itemSortBtn) {
+    itemSortBtn.addEventListener("click", () => {
+      const order = ["price-asc", "price-desc", "name"];
+      const idx = order.indexOf(abyState.itemSort);
+      const next = order[(idx + 1) % order.length];
+      abyState.itemSort = next;
+      abyState.itemPageIndex = 0;
+      let label = "가격 낮은순";
+      if (next === "price-desc") label = "가격 높은순";
+      else if (next === "name") label = "이름순";
+      itemSortBtn.textContent = "정렬: " + label;
+      abyRenderItems();
+    });
+  }
+
+  const itemGrid = document.getElementById("aby-item-grid");
+  if (itemGrid) {
+    itemGrid.addEventListener("click", (e) => {
+      const card = e.target.closest(".aby-item-card");
+      if (!card) return;
+      const id = card.dataset.id;
+      abyState.selectedItemId = id;
+      abyRenderItemSheet();
+    });
+  }
+
+  const itemPrev = document.getElementById("aby-item-page-prev");
+  const itemNext = document.getElementById("aby-item-page-next");
+  if (itemPrev && itemNext) {
+    itemPrev.addEventListener("click", () => {
+      if (abyState.itemPageIndex > 0) {
+        abyState.itemPageIndex -= 1;
+        abyRenderItems();
+      }
+    });
+    itemNext.addEventListener("click", () => {
+      const total = abyGetCurrentItems().length;
+      const maxPage = Math.max(
+        1,
+        Math.ceil(total / abyState.itemPageSize)
+      );
+      if (abyState.itemPageIndex < maxPage - 1) {
+        abyState.itemPageIndex += 1;
+        abyRenderItems();
+      }
+    });
+  }
+
+  const isBackdrop = document.getElementById("aby-itemsheet-backdrop");
+  const isSheet = document.getElementById("aby-itemsheet");
+  const isClose = document.getElementById("aby-itemsheet-close");
+  function closeItemSheet() {
+    if (!isSheet || !isBackdrop) return;
+    isSheet.classList.remove("open");
+    isBackdrop.classList.remove("open");
+    abyState.selectedItemId = null;
+  }
+  if (isBackdrop) isBackdrop.addEventListener("click", closeItemSheet);
+  if (isClose) isClose.addEventListener("click", closeItemSheet);
+  if (isSheet) {
+    isSheet.addEventListener("click", (e) => {
+      const panel = e.target.closest(".aby-itemsheet-panel");
+      if (!panel) closeItemSheet();
+    });
+  }
+
+  const itemBuyBtn = document.getElementById("aby-itemsheet-buy");
+  if (itemBuyBtn) {
+    itemBuyBtn.addEventListener("click", () => {
+      const list = abyGetCurrentItems();
+      const item = list.find((it) => it.id === abyState.selectedItemId);
+      if (!item) return;
+
+      const targetSelect = document.getElementById("aby-item-target");
+      const targetName = targetSelect ? targetSelect.value : "";
+
+      if (!targetName) {
+        alert("어느 캐릭터에게 사용할지 선택해 주세요.");
+        return;
+      }
+
+      const msg = `리리야 🔮아이템 [${item.name}]|[${item.price} Cr] 구매해서 ${targetName}에게 사용하고싶어`;
+
+      try {
+        if (typeof sendMessage === "function") {
+          sendMessage(msg);
+        }
+      } catch (e) {
+        console.warn("sendMessage 실패", e);
+      }
+    });
+  }
+
+  abyRefreshItemOwnerFilter();
+
+  abyRenderAll();
+  abySetMode("slave");
+}
+
+document.addEventListener("DOMContentLoaded", abyInit);
+
+function onUpdateData(statusViewData) {
+  if (!statusViewData || typeof statusViewData.getObject !== "function")
+    return;
+
+  const all = statusViewData.getObject() || {};
+
+  let credit =
+    all.var_credits ??
+    all.var_Credits ??
+    all.credits ??
+    all.credit ??
+    all["크레딧"];
+  if (credit == null) credit = 0;
+  abyState.credit = Number(credit) || 0;
+
+  const rank =
+    all.var_rank ||
+    all.var_Rank ||
+    all.rank ||
+    all["등급"] ||
+    all["AbyssRank"] ||
+    all["abyss_rank"] ||
+    null;
+  if (rank != null) abyState.rankText = String(rank);
+
+  const timeVal =
+    all.var_time ??
+    all.var_Time ??
+    all.time;
+
+  if (timeVal != null) {
+    abyState.meta.time = String(timeVal);
+  }
+
+  const locVal =
+    all.var_location ??
+    all.var_Location ??
+    all.location;
+
+  if (locVal != null) {
+    abyState.meta.location = String(locVal);
+  }
+
+  let slaves = all.market_slaves || all["노예 목록"] || null;
+  if (typeof slaves === "string") {
+    try {
+      slaves = JSON.parse(slaves);
+    } catch (e) {
+      slaves = null;
+    }
+  }
+
+  if (Array.isArray(slaves) && slaves.length > 0) {
+    abyState.slaves = slaves.map((s, i) => ({
+      ...ABY_DEFAULT_SLAVES[0],
+      ...s,
+      id: s.id || `slave-${i}`,
+    }));
+  }
+
+  if (Array.isArray(abyState.slaves)) {
+    abyState.slaves = abyState.slaves.map((s) => {
+      const name = String(s.name || "");
+      const baseName = name.replace(/\s+/g, "");
+
+      const candidates = [
+        "var_" + baseName,
+        baseName,
+        name,
+      ];
+
+      let raw = null;
+      for (const k of candidates) {
+        if (k && all[k] != null) {
+          raw = all[k];
+          break;
+        }
+      }
+
+      if (!raw || typeof raw !== "string") {
+        return { ...s };
+      }
+
+      const parsed = abyParseSlaveVar(raw, name);
+
+      return {
+        ...s,
+        owned: parsed.owned,
+        favor: parsed.favor,
+        obedience: parsed.obedience,
+        corruption: parsed.corruption,
+        mood: parsed.mood,
+      };
+    });
+  }
+
+  abyRenderHero();
+  abyRenderTabs();
+  abyRenderCards();
+  abyRenderItems();
+
+  if (typeof abyRenderStatus === "function") {
+    abyRenderStatus();
+  }
+}
+</script>
